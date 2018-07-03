@@ -8,7 +8,7 @@ module top(clk, rst);
 	wire [3:0] op;
 	regfile regfile(a, b, aaddr, baddr, l, oaddr, rwe, clk, rst);
 	sel2 asel2(a, iv, as, aa);
-	alu alu(aa, b, op, o, carry, zero, bigger);
+	alu alu(aa, b, op, o, carry, zero, bigger, clk);
 	pc pc(pa, l[7:0], pwe, clk, rst);
 	imem imem(pa, d) ;
 	sel2 msel2(o, {8'h0, mrd}, ms, l);

@@ -24,9 +24,9 @@ int main(){
   //poen reading file
   std::ifstream fpi0;
   if(qnum==1)fpi0.open("input/Q1.txt");
-  else if(qnum==2)fpi0.open("input/Q4.txt");
-  else if(qnum==3)fpi0.open("input/Q4.txt");
-  else if(qnum==4)fpi0.open("input/Q5.txt");
+  else if(qnum==2)fpi0.open("input/Q2.txt");
+  else if(qnum==3)fpi0.open("input/Q3.txt");
+  else if(qnum==4)fpi0.open("input/Q4.txt");
   else if(qnum==5)fpi0.open("input/Q5.txt");
   else if(qnum==6)fpi0.open("input/Q6.txt");
   else if(qnum==7)fpi0.open("input/Q7.txt");
@@ -55,7 +55,7 @@ int main(){
     //    std::cout<<kyoukai[i*2+0]<<kyoukai[i*2+1]<<std::endl;
   }
 
-  unsigned short int swich1=0,swich2=0,st,count=0;
+  unsigned short int swich1=0,swich2=0,st,count=0,failnum=0;
   //  time_t t = time(NULL);
   st=genrand(seed);
   
@@ -81,9 +81,10 @@ int main(){
       if(count==henn){
       swich1=1;
       }
+      failnum+=1;
       count=0;
     }
-    std::cout<<"答えは以下になります"<<std::endl;
+    std::cout<<"答えは以下になります．"<<failnum<<"回目で成功しました．"<<std::endl;
     for(i=0;i<kukan;i++){
       std::cout<<block[i]%4<<std::endl;
     }

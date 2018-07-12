@@ -2,9 +2,9 @@
 `timescale 1ns/1ps
 `include "def.h"
 module test_cpu;
-parameter STEP = 10;
-integer FP;
-integer i;
+    parameter STEP = 10;
+    integer FP;
+    integer i;
     reg clk, rst_n;
     reg[31:0] count;
     reg[31:0] stall;
@@ -57,7 +57,7 @@ integer i;
         begin
             $display("Finish");
             $display("%h count:%d stall:%d",ddataout,count,stall);
-            for(i=200; i<300; i=i+1)
+            for(i=50; i<110; i=i+1)
                 $fdisplay(FP,"%h", dmem_1.mem[i]);
             $finish;
         end

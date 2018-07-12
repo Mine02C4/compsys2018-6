@@ -43,21 +43,21 @@ module test_cpu;
     end
 
     always @(negedge clk) begin
-        /*$display("pc:%h idatain:%h stall:%b", mipse_1.pc, mipse_1.instr, mipse_1.stall);
+        $display("pc:%h idatain:%h stall:%b", mipse_1.pc, mipse_1.instr, mipse_1.stall);
         $display("reg:%h %h %h %h %h %h %h",
         mipse_1.rfile_1.rf[1], mipse_1.rfile_1.rf[2],
         mipse_1.rfile_1.rf[3], mipse_1.rfile_1.rf[4], mipse_1.rfile_1.rf[5],
         mipse_1.rfile_1.rf[6], mipse_1.rfile_1.rf[7]);
         $display("mem:%h %h %h %h", 
         dmem_1.mem[0], dmem_1.mem[1],
-        dmem_1.mem[2], dmem_1.mem[3]);*/
+        dmem_1.mem[2], dmem_1.mem[3]);
         if(mipse_1.stall) stall <= stall+1;
         count <= count+1;
-        if((daddr == 32'd100) & we)
+        if((daddr == 32'h7fff) & we)
         begin
-            $display("Finish");
+            $display("FINISH dmem = %h", dmem_1.mem[16'd11]); // output line 12
             $display("%h count:%d stall:%d",ddataout,count,stall);
-            for(i=50; i<110; i=i+1)
+            for(i=0; i<50; i=i+1)
                 $fdisplay(FP,"%h", dmem_1.mem[i]);
             $finish;
         end

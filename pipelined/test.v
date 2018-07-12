@@ -13,7 +13,7 @@ integer i;
     wire [`DATA_W-1:0] daddr;
     wire [`DATA_W-1:0] idata;
     wire we;
-    
+
     /* Clock generator */
     always #(STEP/2) begin
         clk <= ~clk;
@@ -29,16 +29,17 @@ integer i;
     initial begin
         $dumpfile("pipelined.vcd");
         $dumpvars(0,mipse_1);
-	    FP= $fopen("result.dat");
+        FP= $fopen("result.dat");
         clk <= `DISABLE;
         rst_n <= `ENABLE_N;
-	    count <= 0;
-	    stall <= 0;
-    #(STEP*1/4)
-    #STEP
+        count <= 0;
+        stall <= 0;
+        #(STEP*1/4)
+        #STEP
         rst_n <= `DISABLE_N;
-    #(STEP*100000)
-    $finish;
+        #(STEP*100000)
+        $display("Finish by STEP max");
+        $finish;
     end
 
     always @(negedge clk) begin
@@ -52,12 +53,13 @@ integer i;
         dmem_1.mem[2], dmem_1.mem[3]);*/
         if(mipse_1.stall) stall <= stall+1;
         count <= count+1;
-	    if((daddr == 32'h7fff) & we)
+        if((daddr == 32'd100) & we)
         begin
+            $display("Finish");
             $display("%h count:%d stall:%d",ddataout,count,stall);
             for(i=200; i<300; i=i+1)
                 $fdisplay(FP,"%h", dmem_1.mem[i]);
             $finish;
-        end 
+        end
     end
 endmodule

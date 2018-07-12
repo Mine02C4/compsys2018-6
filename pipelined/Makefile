@@ -1,5 +1,6 @@
 VERILOG := iverilog
 VTEST := test.v
+VHEADERS := def.h
 VFILES := mipse.v alu.v rfile.v dmem.v imem.v
 VOUT := pipelined.out
 
@@ -7,8 +8,8 @@ VOUT := pipelined.out
 
 all: $(VOUT)
 
-$(VOUT):	$(TEST) $(VFILES)
-	$(VERILOG) -o $@ $^
+$(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
+	$(VERILOG) -o $@ $(VTEST) $(VFILES)
 
 test: $(VOUT)
 	vvp $<

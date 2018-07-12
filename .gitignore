@@ -17,3 +17,6 @@
 ## Output binary
 *.out
 
+## Python temporary
+__pycache__
+*.pyc

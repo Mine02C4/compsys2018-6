@@ -139,6 +139,7 @@ INST_SCHEMES = {
         'ipop':  Instruction32('010000|00000000000000000000000000|'),
         'push':  Instruction32('010000|r0{5}|'),
         'pop':   Instruction32('010000|r0{5}|'),
+        'rand':  Instruction32('000001|r0{5}|'),
         'lb':    Instruction32('100000|r1{5}|r0{5}|i0{16}'),
         'sb':    Instruction32('101000|r1{5}|r0{5}|i0{16}'),
         'lw':    Instruction32('100011|r1{5}|r0{5}|i0{16}'),

@@ -8,7 +8,7 @@ output [`DATA_W-1:0] aluresult,
 output [`DATA_W-1:0] writedata,
 output memwrite);
 
-wire [`DATA_W-1:0] srca, srcb, rd2, result;
+wire [`DATA_W-1:0] srca, srcb, rd2, result, rand_result;
 wire [`OPCODE_W-1:0] opcode;
 wire [`SHAMT_W-1:0] shamt;
 wire [`OPCODE_W-1:0] func;
@@ -18,7 +18,7 @@ wire [`DATA_W-1:0] signimm;
 wire [`DATA_W-1:0] pcplus4;
 wire regwrite;
 wire sw_op, beq_op, bne_op, addi_op, lw_op, j_op, jal_op, jr_op, alu_op;
-wire slt_op, ori_op, andi_op, sb_op, lb_op, lui_op;
+wire slt_op, ori_op, andi_op, sb_op, lb_op, lui_op, rand_op;
 
 wire zero;
 assign zero = 32'b0;
@@ -42,6 +42,7 @@ assign j_op = (opcode == `OP_J);
 assign jal_op = (opcode == `OP_JAL);
 assign jr_op = (opcode == `OP_REG) & (func == `FUNC_JR);
 assign slt_op = (opcode == `OP_REG) & (func == `FUNC_SLT);
+assign rand_op = (opcode == `OP_RAND);
 
 assign writedata =
         sb_op & !aluresult[1] & !aluresult[0] ? {rd2[7:0], 24'b0} :
@@ -72,12 +73,15 @@ assign result =
         lb_op & !aluresult[1] & aluresult[0]? {{24{readdata[23]}}, readdata[23:16]}:
         lb_op & aluresult[1] & !aluresult[0]? {{24{readdata[15]}}, readdata[15:8]}:
         lb_op & aluresult[1] & aluresult[0]? {{24{readdata[7]}}, readdata[7:0]}:
+        rand_op ? rand_result:
         aluresult;
 
 assign regwrite = lw_op | alu_op | addi_op | jal_op | slt_op | lb_op | lui_op |
-                  andi_op | ori_op;
+                  andi_op | ori_op | rand_op;
 
-assign writereg = jal_op ? 5'b11111: alu_op | slt_op ? rd : rt;
+assign writereg = jal_op ? 5'b11111: (alu_op | slt_op | rand_op) ? rd : rt;
+
+rand rand_1(.clk(clk), .rst_n(rst_n), .out(rand_result));
 
 alu alu_1(.a(srca), .b(srcb), .s(com), .y(aluresult));
 

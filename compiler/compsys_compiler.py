@@ -159,10 +159,11 @@ def _compile_line(inp_line, line_idx):
 
     # Extract operator
     ret = _split(inp_line, ' ', 2)
-    if not ret:
-        _print_error('No arguments', line_idx, inp_line)
-        return False
-    op, args = ret
+    if ret:
+        op, args = ret
+    else:
+        op = inp_line
+        args = ''
     op = op.strip()  # Remove extra spaces
     if op not in INST_SCHEMES:
         _print_error('Invalid operator', line_idx, inp_line)
@@ -173,6 +174,8 @@ def _compile_line(inp_line, line_idx):
     args = _split(args, ',')
     for i, arg in enumerate(args):
         args[i] = arg.strip()  # Remove extra spaces
+    if len(args) == 1 and not args[0]:  # For no arguments
+        args = list()
     logger.debug(' args: %s', args)
 
     # Divide input arguments into reg and imm

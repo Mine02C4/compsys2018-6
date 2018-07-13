@@ -1,3 +1,7 @@
 add $3, $1, $2
 addi $3, $0, 10
 rand $10
+ipush 10
+ipop
+push $1
+pop $3

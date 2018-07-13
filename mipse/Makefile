@@ -2,7 +2,7 @@ VERILOG := iverilog
 VFLAGS := -Wall -Wno-timescale
 VTEST := test.v
 VHEADERS := def.h
-VFILES := mipse.v alu.v rfile.v dmem.v imem.v
+VFILES := mipse.v alu.v rfile.v dmem.v imem.v rand.v
 VOUT := mipse.out
 
 ASMDIR := ../compiler

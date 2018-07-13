@@ -7,7 +7,7 @@ module genrand(clk,rst,seed,randnum);
 
    always @(posedge clk)begin
       if(rst)begin//はじめだけseed値を代入する
-	 randnum=seed;
+          randnum=seed;
       end
       xx=randnum;
       xx=xx^xx<<3;
@@ -17,7 +17,7 @@ module genrand(clk,rst,seed,randnum);
    end
 endmodule // genrand
 
-module test;
+module test_genrand;
    reg clk,rst;
    reg [15:0] seed;
    wire [15:0] randnum;
@@ -34,7 +34,7 @@ module test;
       #500;
       $finish;
    end // initial begin
-endmodule // test
+endmodule // test_genrand
 
 	
    

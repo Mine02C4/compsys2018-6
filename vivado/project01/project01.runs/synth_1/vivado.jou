@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Jul 12 22:37:49 2018
+# Process ID: 6620
+# Current directory: /home/blackbus2/usr/naoya/compsys2018-6/vivado/project01/project01.runs/synth_1
+# Command line: vivado -log test_mipse.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source test_mipse.tcl
+# Log file: /home/blackbus2/usr/naoya/compsys2018-6/vivado/project01/project01.runs/synth_1/test_mipse.vds
+# Journal file: /home/blackbus2/usr/naoya/compsys2018-6/vivado/project01/project01.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source test_mipse.tcl -notrace

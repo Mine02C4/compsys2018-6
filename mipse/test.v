@@ -26,7 +26,7 @@ module test_cpu;
     dmem dmem_1(.clk(clk), .a(daddr[17:2]), .rd(ddatain), .wd(ddataout), .we(we));
 
     initial begin
-        $dumpfile("pipelined.vcd");
+        $dumpfile("dump.vcd");
         $dumpvars(0,mipse_1);
         FP= $fopen("result.dat");
         clk <= `DISABLE;

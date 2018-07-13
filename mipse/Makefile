@@ -16,8 +16,12 @@ all: $(VOUT)
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 	$(VERILOG) $(VFLAGS) -o $@ $(VTEST) $(VFILES)
 
-test: $(VOUT) imem.dat
-	vvp $<
+test: randsearch.imem.dat $(VOUT) 
+	cp $< imem.dat
+	vvp $(VOUT)
+
+%.imem.dat: %.asm $(ASM) $(ASMDEPS)
+	$(ASM) -o $@ $<
 
 imem.dat: prog.asm $(ASM) $(ASMDEPS)
 	$(ASM) -o $@ $<

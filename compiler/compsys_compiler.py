@@ -83,7 +83,12 @@ class Instruction32(object):
         for var in var_list:
             idx = self._extract_arg_idx(var)
             width = self._extract_bit_width(var)
-            rep = format(args[idx], '0{}b'.format(width))
+            val = args[idx]
+            if val < 0:
+                mask = (1 << width) - 1
+                rep = format(val & mask, '0{}b'.format(width))
+            else:
+                rep = format(val, '0{}b'.format(width))
             inst_rep = inst_rep.replace(var, rep)
         return inst_rep
 

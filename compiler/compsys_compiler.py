@@ -16,6 +16,10 @@ def compile_lines(inp_lines):
     # Parse for each line
     out_lines = list()
     for i, line in enumerate(inp_lines.splitlines()):
+        # Remove comment
+        comm_idx = line.find('//')
+        if 0 <= comm_idx:
+            line = line[: comm_idx]
         # Ignore break line
         line = line.strip()
         if len(line) == 0:

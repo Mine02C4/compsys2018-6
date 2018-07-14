@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="compsys_de0">
+		<CBX_INST_ENTRY INSTANCE_NAME="|compsys_de0|ram:ram_inst2|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_6ag1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|compsys_de0|ram:ram_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_6ag1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

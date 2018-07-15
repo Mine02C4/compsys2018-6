@@ -9,14 +9,25 @@ ASMDIR := ../compiler
 ASM := $(ASMDIR)/compile.py
 ASMDEPS = $(ASMDIR)/compsys_compiler.py
 
-.PHONY: all test clean
+INPUTDIR := ../input
+DMEMINPUTS := $(wildcard $(INPUTDIR)/dmem*.dat)
+
+.PHONY: all answers test clean
 
 all: $(VOUT)
+
+answers: $(patsubst $(INPUTDIR)/dmem%.dat, answer%.txt, $(DMEMINPUTS))
+
+answer%.txt: $(INPUTDIR)/dmem%.dat randsearch.imem.dat $(VOUT)
+	cp randsearch.imem.dat imem.dat
+	cp $< dmem.dat
+	vvp $(VOUT)
+	mv answer.txt $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 	$(VERILOG) $(VFLAGS) -o $@ $(VTEST) $(VFILES)
 
-test: randsearch.imem.dat $(VOUT) 
+test: randsearch.imem.dat $(VOUT)
 	cp $< imem.dat
 	vvp $(VOUT)
 

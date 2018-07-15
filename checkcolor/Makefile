@@ -9,9 +9,17 @@ CHECKSRCS := checkanswer.cpp
 OBJS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 DEPS := $(patsubst %.o,%.d, $(OBJS))
 
-.PHONY: all
+VDIR := ../mipse
+INPUTDIR := ../input
+
+.PHONY: all validate clean
 
 all: $(OUTCHECK) $(OUTCOLOR)
+
+validate: job01
+
+job01: $(OUTCHECK) $(VDIR)/answer01.txt $(INPUTDIR)/Q01.txt
+	./$^
 
 $(OUTCOLOR): $(patsubst %.cpp,%.o,$(COLORSRCS))
 

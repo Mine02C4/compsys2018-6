@@ -28,7 +28,7 @@ module test_cpu;
     initial begin
         $dumpfile("dump.vcd");
         $dumpvars(0,mipse_1);
-        FP= $fopen("result.dat");
+        FP= $fopen("answer.txt");
         clk <= `DISABLE;
         rst_n <= `ENABLE_N;
         count <= 0;
@@ -68,8 +68,13 @@ module test_cpu;
         begin
             $display("FINISH dmem = %h", dmem_1.mem[16'd11]); // output line 12
             $display("%h count:%d",ddataout,count);
-            for(i=0; i<1024; i=i+1)
-                $fdisplay(FP,"%h", dmem_1.mem[i]);
+            for(i=256; i<1024; i=i+1)
+            begin
+                /*$fdisplay(FP,"%d %d %d %d",
+                    dmem_1.mem[i][31:24], dmem_1.mem[i][23:16],
+                    dmem_1.mem[i][15:8],  dmem_1.mem[i][7:0]);*/
+                $fdisplay(FP,"%d", dmem_1.mem[i]);
+            end
             $finish;
         end
     end

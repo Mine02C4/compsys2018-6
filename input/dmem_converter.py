@@ -8,6 +8,7 @@ elements = f.read().split()
 #print(elements)
 output_file = open('Q{0}.dat'.format(input_file),'w')
 for n in elements:
-    print(hex(int(n)))
     output_file.write(format(int(n), '02x'))
-
+output_file.close()
+f.close()
+print('output file is Q{0}.dat'.format(input_file))

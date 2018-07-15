@@ -1,5 +1,5 @@
 Analysis & Synthesis report for compsys_de0
-Sat Jul 14 16:39:17 2018
+Sun Jul 15 22:55:07 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -14,18 +14,17 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   6. Analysis & Synthesis Resource Utilization by Entity
   7. Analysis & Synthesis RAM Summary
   8. Analysis & Synthesis IP Cores Summary
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Source assignments for ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated
- 12. Source assignments for ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated
- 13. Parameter Settings for User Entity Instance: ram:ram_inst|altsyncram:altsyncram_component
- 14. Parameter Settings for User Entity Instance: ram:ram_inst2|altsyncram:altsyncram_component
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Source assignments for imem:imem_1|altsyncram:altsyncram_component|altsyncram_i3i1:auto_generated
+ 12. Source assignments for dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated
+ 13. Parameter Settings for User Entity Instance: imem:imem_1|altsyncram:altsyncram_component
+ 14. Parameter Settings for User Entity Instance: dmem:dmem_1|altsyncram:altsyncram_component
  15. altsyncram Parameter Settings by Entity Instance
- 16. Port Connectivity Checks: "ram:ram_inst2"
- 17. Port Connectivity Checks: "ram:ram_inst"
- 18. Port Connectivity Checks: "mipse:mipse_1"
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
+ 16. Port Connectivity Checks: "imem:imem_1"
+ 17. Port Connectivity Checks: "mipse:mipse_1"
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -51,18 +50,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jul 14 16:39:16 2018      ;
+; Analysis & Synthesis Status        ; Successful - Sun Jul 15 22:55:06 2018      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; compsys_de0                                ;
 ; Top-level Entity Name              ; compsys_de0                                ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 7                                          ;
-;     Total combinational functions  ; 7                                          ;
-;     Dedicated logic registers      ; 7                                          ;
-; Total registers                    ; 7                                          ;
-; Total pins                         ; 46                                         ;
+; Total logic elements               ; 2,968                                      ;
+;     Total combinational functions  ; 1,976                                      ;
+;     Dedicated logic registers      ; 1,088                                      ;
+; Total registers                    ; 1088                                       ;
+; Total pins                         ; 70                                         ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 4                                          ;
+; Total memory bits                  ; 131,072                                    ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
 ; Total PLLs                         ; 0                                          ;
 +------------------------------------+--------------------------------------------+
@@ -155,32 +154,36 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                             ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                         ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
-; ../mipse/rfile.v                 ; yes             ; User Verilog HDL File        ; E:/compsys2018-6/mipse/rfile.v                                       ;         ;
-; ../mipse/rand.v                  ; yes             ; User Verilog HDL File        ; E:/compsys2018-6/mipse/rand.v                                        ;         ;
-; ../mipse/mipse.v                 ; yes             ; User Verilog HDL File        ; E:/compsys2018-6/mipse/mipse.v                                       ;         ;
-; ../mipse/def.h                   ; yes             ; User Unspecified File        ; E:/compsys2018-6/mipse/def.h                                         ;         ;
-; ../mipse/alu.v                   ; yes             ; User Verilog HDL File        ; E:/compsys2018-6/mipse/alu.v                                         ;         ;
-; ram.v                            ; yes             ; User Wizard-Generated File   ; E:/compsys2018-6/fpga_de0/ram.v                                      ;         ;
-; compsys_de0.v                    ; yes             ; User Verilog HDL File        ; E:/compsys2018-6/fpga_de0/compsys_de0.v                              ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc        ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_6ag1.tdf           ; yes             ; Auto-Generated Megafunction  ; E:/compsys2018-6/fpga_de0/db/altsyncram_6ag1.tdf                     ;         ;
-; db/decode_ira.tdf                ; yes             ; Auto-Generated Megafunction  ; E:/compsys2018-6/fpga_de0/db/decode_ira.tdf                          ;         ;
-; db/decode_b7a.tdf                ; yes             ; Auto-Generated Megafunction  ; E:/compsys2018-6/fpga_de0/db/decode_b7a.tdf                          ;         ;
-; db/mux_fnb.tdf                   ; yes             ; Auto-Generated Megafunction  ; E:/compsys2018-6/fpga_de0/db/mux_fnb.tdf                             ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                       ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                         ; Library ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
+; imem.v                           ; yes             ; User Wizard-Generated File             ; E:/compsys2018-6/fpga_de0/imem.v                                     ;         ;
+; dmem.v                           ; yes             ; User Wizard-Generated File             ; E:/compsys2018-6/fpga_de0/dmem.v                                     ;         ;
+; ../mipse/rfile.v                 ; yes             ; User Verilog HDL File                  ; E:/compsys2018-6/mipse/rfile.v                                       ;         ;
+; ../mipse/rand.v                  ; yes             ; User Verilog HDL File                  ; E:/compsys2018-6/mipse/rand.v                                        ;         ;
+; ../mipse/mipse.v                 ; yes             ; User Verilog HDL File                  ; E:/compsys2018-6/mipse/mipse.v                                       ;         ;
+; ../mipse/def.h                   ; yes             ; User Unspecified File                  ; E:/compsys2018-6/mipse/def.h                                         ;         ;
+; ../mipse/alu.v                   ; yes             ; User Verilog HDL File                  ; E:/compsys2018-6/mipse/alu.v                                         ;         ;
+; compsys_de0.v                    ; yes             ; User Verilog HDL File                  ; E:/compsys2018-6/fpga_de0/compsys_de0.v                              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal131.inc                   ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_i3i1.tdf           ; yes             ; Auto-Generated Megafunction            ; E:/compsys2018-6/fpga_de0/db/altsyncram_i3i1.tdf                     ;         ;
+; imem.mif                         ; yes             ; Auto-Found Memory Initialization File  ; E:/compsys2018-6/fpga_de0/imem.mif                                   ;         ;
+; db/altsyncram_i9i1.tdf           ; yes             ; Auto-Generated Megafunction            ; E:/compsys2018-6/fpga_de0/db/altsyncram_i9i1.tdf                     ;         ;
+; dmem.mif                         ; yes             ; Auto-Found Memory Initialization File  ; E:/compsys2018-6/fpga_de0/dmem.mif                                   ;         ;
+; db/decode_ira.tdf                ; yes             ; Auto-Generated Megafunction            ; E:/compsys2018-6/fpga_de0/db/decode_ira.tdf                          ;         ;
+; db/decode_b7a.tdf                ; yes             ; Auto-Generated Megafunction            ; E:/compsys2018-6/fpga_de0/db/decode_b7a.tdf                          ;         ;
+; db/mux_fnb.tdf                   ; yes             ; Auto-Generated Megafunction            ; E:/compsys2018-6/fpga_de0/db/mux_fnb.tdf                             ;         ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -188,77 +191,66 @@ applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 7         ;
+; Estimated Total logic elements              ; 2,968     ;
 ;                                             ;           ;
-; Total combinational functions               ; 7         ;
+; Total combinational functions               ; 1976      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 2         ;
-;     -- 3 input functions                    ; 2         ;
-;     -- <=2 input functions                  ; 3         ;
+;     -- 4 input functions                    ; 1725      ;
+;     -- 3 input functions                    ; 201       ;
+;     -- <=2 input functions                  ; 50        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 7         ;
-;     -- arithmetic mode                      ; 0         ;
+;     -- normal mode                          ; 1856      ;
+;     -- arithmetic mode                      ; 120       ;
 ;                                             ;           ;
-; Total registers                             ; 7         ;
-;     -- Dedicated logic registers            ; 7         ;
+; Total registers                             ; 1088      ;
+;     -- Dedicated logic registers            ; 1088      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 46        ;
-; Total memory bits                           ; 4         ;
+; I/O pins                                    ; 70        ;
+; Total memory bits                           ; 131072    ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 9         ;
-; Total fan-out                               ; 86        ;
-; Average fan-out                             ; 0.80      ;
+; Maximum fan-out                             ; 1120      ;
+; Total fan-out                               ; 11401     ;
+; Average fan-out                             ; 3.52      ;
 +---------------------------------------------+-----------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                              ;
-+-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                       ; Library Name ;
-+-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------+--------------+
-; |compsys_de0                              ; 7 (7)             ; 7 (7)        ; 4           ; 0            ; 0       ; 0         ; 46   ; 0            ; |compsys_de0                                                                              ; work         ;
-;    |ram:ram_inst2|                        ; 0 (0)             ; 0 (0)        ; 2           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|ram:ram_inst2                                                                ; work         ;
-;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 2           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|ram:ram_inst2|altsyncram:altsyncram_component                                ; work         ;
-;          |altsyncram_6ag1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated ; work         ;
-;    |ram:ram_inst|                         ; 0 (0)             ; 0 (0)        ; 2           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|ram:ram_inst                                                                 ; work         ;
-;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 2           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|ram:ram_inst|altsyncram:altsyncram_component                                 ; work         ;
-;          |altsyncram_6ag1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated  ; work         ;
-+-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                            ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                     ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+--------------+
+; |compsys_de0                              ; 1976 (1)          ; 1088 (0)     ; 131072      ; 0            ; 0       ; 0         ; 70   ; 0            ; |compsys_de0                                                                            ; work         ;
+;    |imem:imem_1|                          ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|imem:imem_1                                                                ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|imem:imem_1|altsyncram:altsyncram_component                                ; work         ;
+;          |altsyncram_i3i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|imem:imem_1|altsyncram:altsyncram_component|altsyncram_i3i1:auto_generated ; work         ;
+;    |mipse:mipse_1|                        ; 1975 (338)        ; 1088 (32)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|mipse:mipse_1                                                              ; work         ;
+;       |alu:alu_1|                         ; 233 (233)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|mipse:mipse_1|alu:alu_1                                                    ; work         ;
+;       |rand:rand_1|                       ; 42 (42)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|mipse:mipse_1|rand:rand_1                                                  ; work         ;
+;       |rfile:rfile_1|                     ; 1362 (1362)       ; 1024 (1024)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |compsys_de0|mipse:mipse_1|rfile:rfile_1                                                ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                          ;
-+-----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+---------+------+
-; Name                                                                                    ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
-+-----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+---------+------+
-; ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 65536        ; 32           ; --           ; --           ; 2097152 ; None ;
-; ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ALTSYNCRAM  ; AUTO ; Single Port ; 65536        ; 32           ; --           ; --           ; 2097152 ; None ;
-+-----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+---------+------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                           ;
++---------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------+
+; Name                                                                                  ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF      ;
++---------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------+
+; imem:imem_1|altsyncram:altsyncram_component|altsyncram_i3i1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 4096         ; 32           ; --           ; --           ; 131072 ; imem.mif ;
++---------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                        ;
-+--------+--------------+---------+--------------+--------------+----------------------------+---------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance            ; IP Include File                 ;
-+--------+--------------+---------+--------------+--------------+----------------------------+---------------------------------+
-; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |compsys_de0|ram:ram_inst  ; E:/compsys2018-6/fpga_de0/ram.v ;
-; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |compsys_de0|ram:ram_inst2 ; E:/compsys2018-6/fpga_de0/ram.v ;
-+--------+--------------+---------+--------------+--------------+----------------------------+---------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                        ;
-+--------------------------------------------------------------------------------------------------+----------------------------------------+
-; Register name                                                                                    ; Reason for Removal                     ;
-+--------------------------------------------------------------------------------------------------+----------------------------------------+
-; ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|address_reg_a[0..2] ; Stuck at GND due to stuck port data_in ;
-; ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|address_reg_a[0..2]  ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 6                                                            ;                                        ;
-+--------------------------------------------------------------------------------------------------+----------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                       ;
++--------+--------------+---------+--------------+--------------+--------------------------+----------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance          ; IP Include File                  ;
++--------+--------------+---------+--------------+--------------+--------------------------+----------------------------------+
+; Altera ; RAM: 1-PORT  ; 13.1    ; N/A          ; N/A          ; |compsys_de0|dmem:dmem_1 ; E:/compsys2018-6/fpga_de0/dmem.v ;
+; Altera ; RAM: 1-PORT  ; 13.1    ; N/A          ; N/A          ; |compsys_de0|imem:imem_1 ; E:/compsys2018-6/fpga_de0/imem.v ;
++--------+--------------+---------+--------------+--------------+--------------------------+----------------------------------+
 
 
 +------------------------------------------------------+
@@ -266,219 +258,225 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 7     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 1088  ;
+; Number of registers using Synchronous Clear  ; 12    ;
+; Number of registers using Synchronous Load   ; 19    ;
+; Number of registers using Asynchronous Clear ; 32    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 1030  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Source assignments for ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated ;
-+---------------------------------+--------------------+------+--------------------------------------+
-; Assignment                      ; Value              ; From ; To                                   ;
-+---------------------------------+--------------------+------+--------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
-+---------------------------------+--------------------+------+--------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |compsys_de0|mipse:mipse_1|pc[29]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |compsys_de0|mipse:mipse_1|pc[0]           ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; Yes        ; |compsys_de0|mipse:mipse_1|pc[7]           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |compsys_de0|mipse:mipse_1|writereg[1]     ;
+; 4:1                ; 31 bits   ; 62 LEs        ; 62 LEs               ; 0 LEs                  ; No         ; |compsys_de0|mipse:mipse_1|result[8]       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |compsys_de0|mipse:mipse_1|srcb[2]         ;
+; 5:1                ; 15 bits   ; 45 LEs        ; 45 LEs               ; 0 LEs                  ; No         ; |compsys_de0|mipse:mipse_1|srcb[30]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |compsys_de0|mipse:mipse_1|com[4]          ;
+; 7:1                ; 31 bits   ; 124 LEs       ; 124 LEs              ; 0 LEs                  ; No         ; |compsys_de0|mipse:mipse_1|alu:alu_1|y[19] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Source assignments for ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated ;
-+---------------------------------+--------------------+------+---------------------------------------+
-; Assignment                      ; Value              ; From ; To                                    ;
-+---------------------------------+--------------------+------+---------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                     ;
-+---------------------------------+--------------------+------+---------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Source assignments for imem:imem_1|altsyncram:altsyncram_component|altsyncram_i3i1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------+
+; Assignment                      ; Value              ; From ; To                                  ;
++---------------------------------+--------------------+------+-------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                   ;
++---------------------------------+--------------------+------+-------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: ram:ram_inst|altsyncram:altsyncram_component ;
-+------------------------------------+----------------------+-------------------------------+
-; Parameter Name                     ; Value                ; Type                          ;
-+------------------------------------+----------------------+-------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                       ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                    ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                  ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                  ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                       ;
-; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                       ;
-; WIDTH_A                            ; 32                   ; Signed Integer                ;
-; WIDTHAD_A                          ; 16                   ; Signed Integer                ;
-; NUMWORDS_A                         ; 65536                ; Signed Integer                ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                       ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                       ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                       ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                       ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                       ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                       ;
-; WIDTH_B                            ; 1                    ; Untyped                       ;
-; WIDTHAD_B                          ; 1                    ; Untyped                       ;
-; NUMWORDS_B                         ; 1                    ; Untyped                       ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                       ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                       ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                       ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                       ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                       ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                       ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                       ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                       ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                       ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                       ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                       ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                       ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                       ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                       ;
-; BYTE_SIZE                          ; 8                    ; Untyped                       ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                       ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                       ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                       ;
-; INIT_FILE                          ; UNUSED               ; Untyped                       ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                       ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                       ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                       ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                       ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                       ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                       ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                       ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                       ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                       ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                       ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                       ;
-; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                       ;
-; CBXI_PARAMETER                     ; altsyncram_6ag1      ; Untyped                       ;
-+------------------------------------+----------------------+-------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Source assignments for dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------+
+; Assignment                      ; Value              ; From ; To                                  ;
++---------------------------------+--------------------+------+-------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                   ;
++---------------------------------+--------------------+------+-------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: imem:imem_1|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------------------+
+; Parameter Name                     ; Value                ; Type                         ;
++------------------------------------+----------------------+------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                      ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                   ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                 ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                 ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE               ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                      ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                      ;
+; WIDTH_A                            ; 32                   ; Signed Integer               ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer               ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer               ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                      ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                      ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                      ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                      ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                      ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                      ;
+; WIDTH_B                            ; 1                    ; Untyped                      ;
+; WIDTHAD_B                          ; 1                    ; Untyped                      ;
+; NUMWORDS_B                         ; 1                    ; Untyped                      ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                      ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                      ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                      ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                      ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                      ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                      ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                      ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                      ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                      ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                      ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer               ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                      ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                      ;
+; BYTE_SIZE                          ; 8                    ; Untyped                      ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                      ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
+; INIT_FILE                          ; imem.mif             ; Untyped                      ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                      ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                      ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                      ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                      ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                      ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                      ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                      ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                      ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                      ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                      ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                      ;
+; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                      ;
+; CBXI_PARAMETER                     ; altsyncram_i3i1      ; Untyped                      ;
++------------------------------------+----------------------+------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: ram:ram_inst2|altsyncram:altsyncram_component ;
-+------------------------------------+----------------------+--------------------------------+
-; Parameter Name                     ; Value                ; Type                           ;
-+------------------------------------+----------------------+--------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                        ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                   ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                 ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                        ;
-; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                        ;
-; WIDTH_A                            ; 32                   ; Signed Integer                 ;
-; WIDTHAD_A                          ; 16                   ; Signed Integer                 ;
-; NUMWORDS_A                         ; 65536                ; Signed Integer                 ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                        ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                        ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                        ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                        ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                        ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                        ;
-; WIDTH_B                            ; 1                    ; Untyped                        ;
-; WIDTHAD_B                          ; 1                    ; Untyped                        ;
-; NUMWORDS_B                         ; 1                    ; Untyped                        ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                        ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                        ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                        ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                        ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                        ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                        ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                        ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                        ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                        ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                 ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                        ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                        ;
-; BYTE_SIZE                          ; 8                    ; Untyped                        ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
-; INIT_FILE                          ; UNUSED               ; Untyped                        ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                        ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                        ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                        ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                        ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                        ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                        ;
-; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                        ;
-; CBXI_PARAMETER                     ; altsyncram_6ag1      ; Untyped                        ;
-+------------------------------------+----------------------+--------------------------------+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dmem:dmem_1|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------------------+
+; Parameter Name                     ; Value                ; Type                         ;
++------------------------------------+----------------------+------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                      ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                   ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                 ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                 ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE               ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                      ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                      ;
+; WIDTH_A                            ; 32                   ; Signed Integer               ;
+; WIDTHAD_A                          ; 16                   ; Signed Integer               ;
+; NUMWORDS_A                         ; 65536                ; Signed Integer               ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                      ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                      ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                      ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                      ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                      ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                      ;
+; WIDTH_B                            ; 1                    ; Untyped                      ;
+; WIDTHAD_B                          ; 1                    ; Untyped                      ;
+; NUMWORDS_B                         ; 1                    ; Untyped                      ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                      ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                      ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                      ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                      ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                      ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                      ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                      ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                      ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                      ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                      ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer               ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                      ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                      ;
+; BYTE_SIZE                          ; 8                    ; Untyped                      ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                      ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
+; INIT_FILE                          ; ../dmem.mif          ; Untyped                      ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                      ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                      ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                      ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                      ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                      ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                      ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                      ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                      ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                      ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                      ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                      ;
+; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                      ;
+; CBXI_PARAMETER                     ; altsyncram_i9i1      ; Untyped                      ;
++------------------------------------+----------------------+------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                          ;
-+-------------------------------------------+-----------------------------------------------+
-; Name                                      ; Value                                         ;
-+-------------------------------------------+-----------------------------------------------+
-; Number of entity instances                ; 2                                             ;
-; Entity Instance                           ; ram:ram_inst|altsyncram:altsyncram_component  ;
-;     -- OPERATION_MODE                     ; SINGLE_PORT                                   ;
-;     -- WIDTH_A                            ; 32                                            ;
-;     -- NUMWORDS_A                         ; 65536                                         ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
-;     -- WIDTH_B                            ; 1                                             ;
-;     -- NUMWORDS_B                         ; 1                                             ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                        ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                     ;
-; Entity Instance                           ; ram:ram_inst2|altsyncram:altsyncram_component ;
-;     -- OPERATION_MODE                     ; SINGLE_PORT                                   ;
-;     -- WIDTH_A                            ; 32                                            ;
-;     -- NUMWORDS_A                         ; 65536                                         ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
-;     -- WIDTH_B                            ; 1                                             ;
-;     -- NUMWORDS_B                         ; 1                                             ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                        ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                     ;
-+-------------------------------------------+-----------------------------------------------+
++-----------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                        ;
++-------------------------------------------+---------------------------------------------+
+; Name                                      ; Value                                       ;
++-------------------------------------------+---------------------------------------------+
+; Number of entity instances                ; 2                                           ;
+; Entity Instance                           ; imem:imem_1|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                 ;
+;     -- WIDTH_A                            ; 32                                          ;
+;     -- NUMWORDS_A                         ; 4096                                        ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                ;
+;     -- WIDTH_B                            ; 1                                           ;
+;     -- NUMWORDS_B                         ; 1                                           ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                      ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                        ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                   ;
+; Entity Instance                           ; dmem:dmem_1|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                 ;
+;     -- WIDTH_A                            ; 32                                          ;
+;     -- NUMWORDS_A                         ; 65536                                       ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                ;
+;     -- WIDTH_B                            ; 1                                           ;
+;     -- NUMWORDS_B                         ; 1                                           ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                      ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                        ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                   ;
++-------------------------------------------+---------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ram:ram_inst2"                                                                                ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; address[15..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; address[0]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; q[31..1]       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------+
+; Port Connectivity Checks: "imem:imem_1" ;
++------+-------+----------+---------------+
+; Port ; Type  ; Severity ; Details       ;
++------+-------+----------+---------------+
+; data ; Input ; Info     ; Stuck at GND  ;
+; wren ; Input ; Info     ; Stuck at GND  ;
++------+-------+----------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ram:ram_inst"                                                                                 ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; address[15..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; address[0]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; q[31..1]       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mipse:mipse_1"                                                                           ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                             ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; pc        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; aluresult ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; writedata ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; memwrite  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mipse:mipse_1"                                                                                   ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; pc[31..14]        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; pc[1..0]          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; aluresult[31..18] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; aluresult[1..0]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; writedata         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -486,7 +484,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -496,9 +494,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sat Jul 14 16:39:12 2018
+    Info: Processing started: Sun Jul 15 22:54:56 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off compsys_de0 -c compsys_de0
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file imem.v
+    Info (12023): Found entity 1: imem
+Info (12021): Found 1 design units, including 1 entities, in source file dmem.v
+    Info (12023): Found entity 1: dmem
 Info (12021): Found 1 design units, including 1 entities, in source file /compsys2018-6/mipse/rfile.v
     Info (12023): Found entity 1: rfile
 Warning (10463): Verilog HDL Declaration warning at rand.v(3): "rand" is SystemVerilog-2005 keyword
@@ -508,13 +510,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file /compsy
     Info (12023): Found entity 1: mipse
 Info (12021): Found 1 design units, including 1 entities, in source file /compsys2018-6/mipse/alu.v
     Info (12023): Found entity 1: alu
-Info (12021): Found 1 design units, including 1 entities, in source file ram.v
-    Info (12023): Found entity 1: ram
 Info (12021): Found 1 design units, including 1 entities, in source file compsys_de0.v
     Info (12023): Found entity 1: compsys_de0
 Info (12127): Elaborating entity "compsys_de0" for the top level hierarchy
-Warning (10030): Net "led_mems[9..2]" at compsys_de0.v(26) has no driver or initial value, using a default initial value '0'
-Warning (10034): Output port "seg1" at compsys_de0.v(5) has no driver
 Warning (10034): Output port "vga_r" at compsys_de0.v(7) has no driver
 Warning (10034): Output port "vga_g" at compsys_de0.v(7) has no driver
 Warning (10034): Output port "vga_b" at compsys_de0.v(7) has no driver
@@ -527,12 +525,35 @@ Warning (10230): Verilog HDL assignment warning at mipse.v(53): truncated value 
 Info (12128): Elaborating entity "rand" for hierarchy "mipse:mipse_1|rand:rand_1"
 Info (12128): Elaborating entity "alu" for hierarchy "mipse:mipse_1|alu:alu_1"
 Info (12128): Elaborating entity "rfile" for hierarchy "mipse:mipse_1|rfile:rfile_1"
-Info (12128): Elaborating entity "ram" for hierarchy "ram:ram_inst"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "ram:ram_inst|altsyncram:altsyncram_component"
-Info (12130): Elaborated megafunction instantiation "ram:ram_inst|altsyncram:altsyncram_component"
-Info (12133): Instantiated megafunction "ram:ram_inst|altsyncram:altsyncram_component" with the following parameter:
+Info (12128): Elaborating entity "imem" for hierarchy "imem:imem_1"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "imem:imem_1|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "imem:imem_1|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "imem:imem_1|altsyncram:altsyncram_component" with the following parameter:
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "imem.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone III"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "4096"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "12"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_i3i1.tdf
+    Info (12023): Found entity 1: altsyncram_i3i1
+Info (12128): Elaborating entity "altsyncram_i3i1" for hierarchy "imem:imem_1|altsyncram:altsyncram_component|altsyncram_i3i1:auto_generated"
+Info (12128): Elaborating entity "dmem" for hierarchy "dmem:dmem_1"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "dmem:dmem_1|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "dmem:dmem_1|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "dmem:dmem_1|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "../dmem.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone III"
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
@@ -545,547 +566,344 @@ Info (12133): Instantiated megafunction "ram:ram_inst|altsyncram:altsyncram_comp
     Info (12134): Parameter "widthad_a" = "16"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6ag1.tdf
-    Info (12023): Found entity 1: altsyncram_6ag1
-Info (12128): Elaborating entity "altsyncram_6ag1" for hierarchy "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_i9i1.tdf
+    Info (12023): Found entity 1: altsyncram_i9i1
+Info (12128): Elaborating entity "altsyncram_i9i1" for hierarchy "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated"
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_ira.tdf
     Info (12023): Found entity 1: decode_ira
-Info (12128): Elaborating entity "decode_ira" for hierarchy "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|decode_ira:decode3"
+Info (12128): Elaborating entity "decode_ira" for hierarchy "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|decode_ira:decode3"
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_b7a.tdf
     Info (12023): Found entity 1: decode_b7a
-Info (12128): Elaborating entity "decode_b7a" for hierarchy "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|decode_b7a:rden_decode"
+Info (12128): Elaborating entity "decode_b7a" for hierarchy "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|decode_b7a:rden_decode"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_fnb.tdf
     Info (12023): Found entity 1: mux_fnb
-Info (12128): Elaborating entity "mux_fnb" for hierarchy "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|mux_fnb:mux2"
+Info (12128): Elaborating entity "mux_fnb" for hierarchy "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|mux_fnb:mux2"
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[31]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[30]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[29]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[28]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[27]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[26]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[25]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[24]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[23]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[22]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[21]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[20]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[19]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[18]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[17]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[16]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[15]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[14]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[13]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[12]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[11]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[10]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[9]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[8]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[7]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[6]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[5]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[4]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[3]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[2]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[1]" is missing source, defaulting to GND
+    Warning (12110): Net "ddatain[0]" is missing source, defaulting to GND
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a1"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a2"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a3"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a4"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a5"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a6"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a7"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a8"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a9"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a10"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a11"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a12"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a13"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a14"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a15"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a16"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a17"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a18"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a19"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a20"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a21"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a22"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a23"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a24"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a25"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a26"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a27"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a28"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a29"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a30"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a31"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a32"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a33"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a34"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a35"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a36"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a37"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a38"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a39"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a40"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a41"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a42"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a43"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a44"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a45"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a46"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a47"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a48"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a49"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a50"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a51"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a52"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a53"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a54"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a55"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a56"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a57"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a58"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a59"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a60"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a61"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a62"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a63"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a64"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a65"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a66"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a67"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a68"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a69"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a70"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a71"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a72"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a73"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a74"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a75"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a76"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a77"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a78"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a79"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a80"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a81"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a82"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a83"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a84"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a85"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a86"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a87"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a88"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a89"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a90"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a91"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a92"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a93"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a94"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a95"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a96"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a97"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a98"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a99"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a100"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a101"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a102"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a103"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a104"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a105"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a106"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a107"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a108"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a109"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a110"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a111"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a112"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a113"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a114"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a115"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a116"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a117"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a118"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a119"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a120"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a121"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a122"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a123"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a124"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a125"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a126"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a127"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a128"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a129"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a130"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a131"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a132"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a133"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a134"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a135"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a136"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a137"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a138"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a139"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a140"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a141"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a142"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a143"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a144"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a145"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a146"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a147"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a148"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a149"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a150"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a151"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a152"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a153"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a154"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a155"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a156"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a157"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a158"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a159"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a160"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a161"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a162"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a163"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a164"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a165"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a166"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a167"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a168"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a169"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a170"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a171"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a172"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a173"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a174"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a175"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a176"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a177"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a178"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a179"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a180"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a181"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a182"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a183"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a184"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a185"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a186"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a187"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a188"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a189"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a190"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a191"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a192"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a193"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a194"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a195"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a196"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a197"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a198"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a199"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a200"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a201"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a202"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a203"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a204"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a205"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a206"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a207"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a208"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a209"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a210"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a211"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a212"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a213"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a214"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a215"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a216"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a217"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a218"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a219"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a220"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a221"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a222"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a223"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a224"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a225"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a226"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a227"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a228"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a229"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a230"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a231"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a232"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a233"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a234"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a235"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a236"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a237"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a238"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a239"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a240"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a241"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a242"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a243"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a244"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a245"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a246"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a247"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a248"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a249"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a250"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a251"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a252"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a253"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a254"
-        Warning (14320): Synthesized away node "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a255"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a1"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a2"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a3"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a4"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a5"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a6"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a7"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a8"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a9"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a10"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a11"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a12"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a13"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a14"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a15"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a16"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a17"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a18"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a19"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a20"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a21"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a22"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a23"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a24"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a25"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a26"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a27"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a28"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a29"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a30"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a31"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a32"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a33"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a34"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a35"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a36"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a37"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a38"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a39"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a40"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a41"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a42"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a43"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a44"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a45"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a46"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a47"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a48"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a49"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a50"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a51"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a52"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a53"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a54"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a55"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a56"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a57"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a58"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a59"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a60"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a61"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a62"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a63"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a64"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a65"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a66"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a67"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a68"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a69"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a70"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a71"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a72"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a73"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a74"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a75"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a76"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a77"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a78"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a79"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a80"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a81"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a82"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a83"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a84"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a85"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a86"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a87"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a88"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a89"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a90"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a91"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a92"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a93"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a94"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a95"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a96"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a97"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a98"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a99"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a100"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a101"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a102"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a103"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a104"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a105"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a106"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a107"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a108"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a109"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a110"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a111"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a112"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a113"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a114"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a115"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a116"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a117"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a118"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a119"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a120"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a121"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a122"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a123"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a124"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a125"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a126"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a127"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a128"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a129"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a130"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a131"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a132"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a133"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a134"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a135"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a136"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a137"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a138"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a139"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a140"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a141"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a142"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a143"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a144"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a145"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a146"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a147"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a148"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a149"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a150"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a151"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a152"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a153"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a154"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a155"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a156"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a157"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a158"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a159"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a160"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a161"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a162"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a163"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a164"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a165"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a166"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a167"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a168"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a169"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a170"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a171"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a172"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a173"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a174"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a175"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a176"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a177"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a178"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a179"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a180"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a181"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a182"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a183"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a184"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a185"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a186"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a187"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a188"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a189"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a190"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a191"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a192"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a193"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a194"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a195"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a196"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a197"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a198"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a199"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a200"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a201"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a202"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a203"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a204"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a205"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a206"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a207"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a208"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a209"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a210"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a211"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a212"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a213"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a214"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a215"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a216"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a217"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a218"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a219"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a220"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a221"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a222"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a223"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a224"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a225"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a226"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a227"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a228"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a229"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a230"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a231"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a232"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a233"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a234"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a235"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a236"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a237"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a238"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a239"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a240"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a241"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a242"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a243"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a244"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a245"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a246"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a247"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a248"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a249"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a250"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a251"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a252"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a253"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a254"
-        Warning (14320): Synthesized away node "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ram_block1a255"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a0"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a1"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a2"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a3"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a4"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a5"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a6"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a7"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a8"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a9"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a10"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a11"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a12"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a13"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a14"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a15"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a16"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a17"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a18"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a19"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a20"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a21"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a22"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a23"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a24"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a25"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a26"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a27"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a28"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a29"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a30"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a31"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a32"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a33"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a34"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a35"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a36"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a37"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a38"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a39"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a40"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a41"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a42"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a43"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a44"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a45"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a46"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a47"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a48"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a49"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a50"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a51"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a52"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a53"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a54"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a55"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a56"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a57"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a58"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a59"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a60"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a61"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a62"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a63"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a64"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a65"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a66"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a67"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a68"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a69"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a70"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a71"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a72"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a73"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a74"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a75"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a76"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a77"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a78"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a79"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a80"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a81"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a82"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a83"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a84"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a85"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a86"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a87"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a88"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a89"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a90"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a91"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a92"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a93"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a94"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a95"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a96"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a97"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a98"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a99"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a100"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a101"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a102"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a103"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a104"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a105"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a106"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a107"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a108"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a109"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a110"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a111"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a112"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a113"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a114"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a115"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a116"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a117"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a118"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a119"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a120"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a121"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a122"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a123"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a124"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a125"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a126"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a127"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a128"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a129"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a130"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a131"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a132"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a133"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a134"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a135"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a136"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a137"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a138"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a139"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a140"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a141"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a142"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a143"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a144"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a145"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a146"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a147"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a148"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a149"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a150"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a151"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a152"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a153"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a154"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a155"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a156"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a157"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a158"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a159"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a160"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a161"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a162"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a163"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a164"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a165"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a166"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a167"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a168"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a169"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a170"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a171"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a172"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a173"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a174"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a175"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a176"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a177"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a178"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a179"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a180"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a181"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a182"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a183"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a184"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a185"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a186"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a187"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a188"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a189"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a190"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a191"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a192"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a193"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a194"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a195"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a196"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a197"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a198"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a199"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a200"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a201"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a202"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a203"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a204"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a205"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a206"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a207"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a208"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a209"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a210"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a211"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a212"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a213"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a214"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a215"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a216"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a217"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a218"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a219"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a220"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a221"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a222"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a223"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a224"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a225"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a226"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a227"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a228"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a229"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a230"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a231"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a232"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a233"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a234"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a235"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a236"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a237"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a238"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a239"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a240"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a241"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a242"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a243"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a244"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a245"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a246"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a247"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a248"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a249"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a250"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a251"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a252"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a253"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a254"
+        Warning (14320): Synthesized away node "dmem:dmem_1|altsyncram:altsyncram_component|altsyncram_i9i1:auto_generated|ram_block1a255"
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "mipse:mipse_1|rfile:rfile_1|rf" is uninferred due to asynchronous read logic
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "seg1[0]" is stuck at GND
-    Warning (13410): Pin "seg1[1]" is stuck at GND
-    Warning (13410): Pin "seg1[2]" is stuck at GND
-    Warning (13410): Pin "seg1[3]" is stuck at GND
-    Warning (13410): Pin "seg1[4]" is stuck at GND
-    Warning (13410): Pin "seg1[5]" is stuck at GND
-    Warning (13410): Pin "seg1[6]" is stuck at GND
-    Warning (13410): Pin "seg1[7]" is stuck at GND
-    Warning (13410): Pin "leds[2]" is stuck at GND
-    Warning (13410): Pin "leds[3]" is stuck at GND
-    Warning (13410): Pin "leds[4]" is stuck at GND
-    Warning (13410): Pin "leds[5]" is stuck at GND
-    Warning (13410): Pin "leds[6]" is stuck at GND
-    Warning (13410): Pin "leds[7]" is stuck at GND
-    Warning (13410): Pin "leds[8]" is stuck at GND
-    Warning (13410): Pin "leds[9]" is stuck at GND
+    Warning (13410): Pin "seg1[0]" is stuck at VCC
+    Warning (13410): Pin "seg1[1]" is stuck at VCC
+    Warning (13410): Pin "seg1[2]" is stuck at VCC
+    Warning (13410): Pin "seg1[3]" is stuck at VCC
+    Warning (13410): Pin "seg1[4]" is stuck at VCC
+    Warning (13410): Pin "seg1[5]" is stuck at VCC
+    Warning (13410): Pin "seg1[6]" is stuck at VCC
+    Warning (13410): Pin "seg1[7]" is stuck at VCC
+    Warning (13410): Pin "seg2[0]" is stuck at VCC
+    Warning (13410): Pin "seg2[1]" is stuck at VCC
+    Warning (13410): Pin "seg2[2]" is stuck at VCC
+    Warning (13410): Pin "seg2[3]" is stuck at VCC
+    Warning (13410): Pin "seg2[4]" is stuck at VCC
+    Warning (13410): Pin "seg2[5]" is stuck at VCC
+    Warning (13410): Pin "seg2[6]" is stuck at VCC
+    Warning (13410): Pin "seg2[7]" is stuck at VCC
+    Warning (13410): Pin "seg3[0]" is stuck at VCC
+    Warning (13410): Pin "seg3[1]" is stuck at VCC
+    Warning (13410): Pin "seg3[2]" is stuck at VCC
+    Warning (13410): Pin "seg3[3]" is stuck at VCC
+    Warning (13410): Pin "seg3[4]" is stuck at VCC
+    Warning (13410): Pin "seg3[5]" is stuck at VCC
+    Warning (13410): Pin "seg3[6]" is stuck at VCC
+    Warning (13410): Pin "seg3[7]" is stuck at VCC
+    Warning (13410): Pin "seg4[0]" is stuck at VCC
+    Warning (13410): Pin "seg4[1]" is stuck at VCC
+    Warning (13410): Pin "seg4[2]" is stuck at VCC
+    Warning (13410): Pin "seg4[3]" is stuck at VCC
+    Warning (13410): Pin "seg4[4]" is stuck at VCC
+    Warning (13410): Pin "seg4[5]" is stuck at VCC
+    Warning (13410): Pin "seg4[6]" is stuck at VCC
+    Warning (13410): Pin "seg4[7]" is stuck at VCC
     Warning (13410): Pin "vga_r[0]" is stuck at GND
     Warning (13410): Pin "vga_r[1]" is stuck at GND
     Warning (13410): Pin "vga_r[2]" is stuck at GND
@@ -1101,11 +919,10 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "vga_vs" is stuck at GND
     Warning (13410): Pin "vga_hs" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17036): Removed 12 MSB VCC or GND address nodes from RAM block "ram:ram_inst|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ALTSYNCRAM"
-Info (17036): Removed 12 MSB VCC or GND address nodes from RAM block "ram:ram_inst2|altsyncram:altsyncram_component|altsyncram_6ag1:auto_generated|ALTSYNCRAM"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 11 input pin(s) that do not drive logic
+Warning (21074): Design contains 12 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "buttons[1]"
     Warning (15610): No output dependent on input pin "buttons[2]"
     Warning (15610): No output dependent on input pin "switchs[0]"
     Warning (15610): No output dependent on input pin "switchs[1]"
@@ -1117,15 +934,15 @@ Warning (21074): Design contains 11 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "switchs[7]"
     Warning (15610): No output dependent on input pin "switchs[8]"
     Warning (15610): No output dependent on input pin "switchs[9]"
-Info (21057): Implemented 55 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3102 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 14 input pins
-    Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 7 logic cells
-    Info (21064): Implemented 2 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 567 warnings
+    Info (21059): Implemented 56 output pins
+    Info (21061): Implemented 3000 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 361 warnings
     Info: Peak virtual memory: 4664 megabytes
-    Info: Processing ended: Sat Jul 14 16:39:17 2018
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Processing ended: Sun Jul 15 22:55:07 2018
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 

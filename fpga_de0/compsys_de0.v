@@ -2,7 +2,7 @@ module compsys_de0 (
     input clk,
     input [2:0] buttons,
     input [9:0] switchs,
-    output [7:0] seg1,
+    output [7:0] seg1, seg2, seg3, seg4,
     output [9:0] leds,
     output [3:0] vga_r, vga_g, vga_b,
     output vga_vs, vga_hs);
@@ -21,49 +21,15 @@ module compsys_de0 (
                   .readdata(ddatain), .pc(iaddr), .aluresult(daddr),
                   .writedata(ddataout), .memwrite(we));
 
-    imem imem_1(iaddr[17:2], clk, rst_n, idata);
-    ram dmem_1(daddr[17:2], clk, ddatain, we, ddataout);
+    imem imem_1(iaddr[13:2], clk, 32'b0, 1'b0, idata);  // read only
+    dmem dmem_1(daddr[17:2], clk, ddatain, we, ddataout);
 
-    // ----------------------------- Test for ram -----------------------------
-    assign leds = led_mems;
-    reg [9:0] led_mems;
+    assign leds[9:0] = iaddr[13:4];
 
-    reg [31:0] inp_data;
-    reg w_ren;
-    wire [31:0] out_data;
-    ram ram_inst(16'b01, clk, inp_data, w_ren, out_data);
+    // Turn off
+    assign seg1 = ~8'b0;
+    assign seg2 = ~8'b0;
+    assign seg3 = ~8'b0;
+    assign seg4 = ~8'b0;
 
-    reg [31:0] inp_data2;
-    reg w_ren2;
-    wire [31:0] out_data2;
-    ram ram_inst2(16'b01, clk, inp_data2, w_ren2, out_data2);
-
-    reg downed;
-
-    always@(posedge clk) begin
-        if (buttons[0]) begin
-            // Read
-            w_ren <= 0;
-            led_mems[0] <= out_data[0];
-            downed <= 0;
-        end else begin
-            // Write
-            if (!downed) begin
-                w_ren <= 1;
-                inp_data[0] <= ~out_data[0];
-                led_mems[0] <= ~out_data[0];
-                downed <= 1;
-            end
-        end
-        if (buttons[1]) begin
-            // Read
-            w_ren2 <= 0;
-            led_mems[1] <= out_data2[0];
-        end else begin
-            // Write
-            w_ren2 <= 1;
-            inp_data2[0] <= ~out_data2[0];
-            led_mems[1] <= ~out_data2[0];
-        end
-    end
 endmodule

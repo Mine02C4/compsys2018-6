@@ -1,8 +1,4 @@
-<<<<<<< HEAD:input/Q1.txt
-7 10 
-=======
 7 10
->>>>>>> 2822c993a7aea47e7029db2c98d41672ebed024d:input/Q01.txt
 0 1
 0 2
 1 2

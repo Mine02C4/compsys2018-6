@@ -6,7 +6,7 @@ module test_cpu;
     integer FP;
     integer i;
     reg clk, rst_n;
-    reg[31:0] count;
+    reg[31:0] count, patterns;
     wire [`DATA_W-1:0] ddataout, ddatain ;
     wire [`DATA_W-1:0] iaddr;
     wire [`DATA_W-1:0] daddr;
@@ -32,29 +32,43 @@ module test_cpu;
         clk <= `DISABLE;
         rst_n <= `ENABLE_N;
         count <= 0;
+        patterns <= 0;
         #(STEP*1/4)
         #STEP
         rst_n <= `DISABLE_N;
         #(STEP*100000)
         $display("Finish by STEP max");
+        $display("patterns = %d", patterns);
+        for(i=0; i<1024; i=i+1)
+            $fdisplay(FP,"%h", dmem_1.mem[i]);
         $finish;
     end
 
     always @(negedge clk) begin
-        $display("pc:%h idatain:%h", mipse_1.pc, mipse_1.instr);
-        $display("reg:%h %h %h %h %h %h %h",
+        $display("pc:%h(%d) idatain:%h", mipse_1.pc, mipse_1.pc / 4 + 1,  mipse_1.instr);
+        $display("reg:%h %h %h %h %h %h %h {%h %h}",
         mipse_1.rfile_1.rf[1], mipse_1.rfile_1.rf[2],
         mipse_1.rfile_1.rf[3], mipse_1.rfile_1.rf[4], mipse_1.rfile_1.rf[5],
-        mipse_1.rfile_1.rf[6], mipse_1.rfile_1.rf[7]);
-        $display("mem:%h %h %h %h", 
-        dmem_1.mem[0], dmem_1.mem[1],
-        dmem_1.mem[2], dmem_1.mem[3]);
-        count <= count+1;
+        mipse_1.rfile_1.rf[6], mipse_1.rfile_1.rf[7],
+        mipse_1.rfile_1.rf[8], mipse_1.rfile_1.rf[9]);
+        count <= count + 1;
+        if (mipse_1.pc == 32'h30)
+        begin
+            $display("pattern: %h %h %h %h %h %h %h %h",
+            dmem_1.mem[256], dmem_1.mem[257], dmem_1.mem[258], dmem_1.mem[259],
+            dmem_1.mem[260], dmem_1.mem[261], dmem_1.mem[262], dmem_1.mem[263]);
+            patterns <= patterns + 1;
+        end
+        if (mipse_1.lb_op)
+        begin
+            $display("result %h, aluresult %h, readdata %h",
+                mipse_1.result, mipse_1.aluresult, mipse_1.readdata);
+        end
         if((daddr == 32'h7fff) & we)
         begin
             $display("FINISH dmem = %h", dmem_1.mem[16'd11]); // output line 12
             $display("%h count:%d",ddataout,count);
-            for(i=0; i<50; i=i+1)
+            for(i=0; i<1024; i=i+1)
                 $fdisplay(FP,"%h", dmem_1.mem[i]);
             $finish;
         end

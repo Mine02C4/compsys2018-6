@@ -37,7 +37,7 @@ module test_cpu;
         #(STEP*1/4)
         #STEP
         rst_n <= `DISABLE_N;
-        #(STEP*100000)
+        #(STEP*100)
         $display("Finish by STEP max");
         $finish;
     end
@@ -48,12 +48,13 @@ module test_cpu;
         mipse_1.rfile_1.rf[1], mipse_1.rfile_1.rf[2],
         mipse_1.rfile_1.rf[3], mipse_1.rfile_1.rf[4], mipse_1.rfile_1.rf[5],
         mipse_1.rfile_1.rf[6], mipse_1.rfile_1.rf[7]);
+        $display("regstack: %h", mipse_1.rfile_1.rf[`REG_STACK]);
         $display("mem:%h %h %h %h", 
         dmem_1.mem[0], dmem_1.mem[1],
         dmem_1.mem[2], dmem_1.mem[3]);
         if(mipse_1.stall) stall <= stall+1;
         count <= count+1;
-        if((daddr == 32'h7fff) & we)
+        if((daddr == 32'h80) & we)
         begin
             $display("FINISH dmem = %h", dmem_1.mem[16'd11]); // output line 12
             $display("%h count:%d stall:%d",ddataout,count,stall);

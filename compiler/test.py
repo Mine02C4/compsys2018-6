@@ -35,6 +35,8 @@ class CompilerTest(unittest.TestCase):
     def test_i_inst(self):
         self.assertEqual(compile_lines('addi $3, $1, 2'),
                          conv_b2to32('001000|00001|00011|0000000000000010'))
+        self.assertEqual(compile_lines('j 100'),
+                         conv_b2to32('000010|00000000000000000001100100'))
 
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@ def parse_arguments(argv):
     parser = argparse.ArgumentParser(description='Compiler for Compsys2018-6')
     parser.add_argument('infile', type=str, metavar='PATH')
     parser.add_argument('-o', type=str, metavar='PATH', dest='outfile',
-                        default='dmem.dat')
+                        default='imem.dat')
     args = parser.parse_args(argv)
     return args
 

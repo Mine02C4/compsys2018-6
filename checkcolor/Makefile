@@ -1,18 +1,24 @@
 CXX := g++
 LDFLAGS =
 CXXFLAGS = -O2 -std=c++0x
-OUTPUT := checkcolor.out
-SRCS = checkcolor.cpp
+OUTCOLOR := checkcolor.out
+COLORSRCS := checkcolor.cpp
+OUTCHECK := checkanswer.out
+CHECKSRCS := checkanswer.cpp
 
 OBJS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 DEPS := $(patsubst %.o,%.d, $(OBJS))
 
 .PHONY: all
 
-all: $(OUTPUT)
+all: $(OUTCHECK) $(OUTCOLOR)
 
-$(OUTPUT): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+$(OUTCOLOR): $(patsubst %.cpp,%.o,$(COLORSRCS))
+
+$(OUTCHECK): $(patsubst %.cpp,%.o,$(CHECKSRCS))
+
+%.out:
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -MMD -MT '$@' -o $@ $<

@@ -42,8 +42,9 @@ int main(int argc, char const* argv[]) {
     f_in >> edges[i].first >> edges[i].second;
   }
 
-#if 0
   // Solve
+#if 0
+  // Base algorithm
   unsigned int loop_cnt = 0;
   while (true) {
     loop_cnt++;
@@ -85,9 +86,10 @@ int main(int argc, char const* argv[]) {
 
     // Search from the first again...
   }
-#else
+#elif 0
   unsigned int loop_cnt = 0;
-  // Solve
+
+  // Flatten algorithm
   bool cond1, cond2;
   size_t edge1, edge2;
   int edge_cnt = -1;
@@ -142,6 +144,65 @@ edge_loop_post:
   goto node_loop;
 
 node_loop_post:
+
+#else
+  unsigned int loop_cnt = 0;
+
+  // Renamed algorithm
+  uint32_t reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10,
+           reg11;
+  reg0 = 0;
+
+  reg1 = n_nodes;
+  reg2 = n_edges;
+  reg11 = 10;  // node try count
+first:
+  loop_cnt++;  // (debug)
+  reg8 = -1;
+node_loop:
+  reg8++;
+  if (reg8 == reg1) goto node_loop_post;
+  // Decide one node color
+  reg9 = 0;
+node_try_loop:
+  reg3 = genrand();
+  reg3 = reg3 & 3;
+  nodes[reg8] = reg3;
+  // Check for each edge
+  reg10 = 1;
+  reg7 = -1;
+edge_loop:
+  reg7++;
+  if (reg7 == reg2) goto edge_loop_post;
+  reg5 = edges[reg7].first;
+  reg6 = edges[reg7].second;
+  // Consider only current node
+  reg3 = reg5 != reg8;
+  reg4 = reg6 != reg8;
+  reg3 = reg3 & reg4;
+  if (reg3) goto edge_loop;
+  // Ignore edge for later node
+  reg3 = reg8 < reg5;
+  reg4 = reg8 < reg6;
+  reg3 = reg3 | reg4;
+  if (reg3) goto edge_loop;
+  // Check color validness
+  reg3 = (nodes[reg5] == nodes[reg6]);
+  if (!reg3) goto edge_loop;
+  reg10 = 0;
+  goto edge_loop;
+edge_loop_post:
+  reg9++;
+  reg3 = (reg9 == reg11);
+  reg4 = !reg10;
+  reg3 = reg3 & reg4;
+  if (reg3) goto first; // Search from the first again...
+  if (reg4) goto node_try_loop;
+  goto node_loop;
+
+node_loop_post:
+
+
 #endif
 
   std::cout << "答えは以下になります．" << loop_cnt << "回目で成功しました．"

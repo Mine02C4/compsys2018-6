@@ -42,6 +42,7 @@ int main(int argc, char const* argv[]) {
     f_in >> edges[i].first >> edges[i].second;
   }
 
+#if 0
   // Solve
   unsigned int loop_cnt = 0;
   while (true) {
@@ -84,6 +85,64 @@ int main(int argc, char const* argv[]) {
 
     // Search from the first again...
   }
+#else
+  unsigned int loop_cnt = 0;
+  // Solve
+  bool cond1, cond2;
+  size_t edge1, edge2;
+  int edge_cnt = -1;
+  int node_cnt = -1;
+  size_t node_try_cnt = 0;
+  bool valid_color = true;
+first:
+  loop_cnt++;  // (debug)
+  node_cnt = -1;
+
+node_loop:
+  node_cnt++;
+  if (node_cnt == n_nodes) goto node_loop_post;
+
+  // Decide one node color
+  node_try_cnt = 0;
+node_try_loop:
+  nodes[node_cnt] = genrand() & 3;
+
+  // Check for each edge
+  valid_color = true;
+  edge_cnt = -1;
+edge_loop:
+  edge_cnt++;
+  if (edge_cnt == n_edges) goto edge_loop_post;
+  edge1 = edges[edge_cnt].first;
+  edge2 = edges[edge_cnt].second;
+
+  // Consider only current node
+  cond1 = edge1 != node_cnt;
+  cond2 = edge2 != node_cnt;
+  cond1 = cond1 & cond2;
+  if (cond1) goto edge_loop;
+  // Ignore edge for later node
+  cond1 = node_cnt < edge1;
+  cond2 = node_cnt < edge2;
+  cond1 = cond1 | cond2;
+  if (cond1) goto edge_loop;
+  // Check color validness
+  cond1 = (nodes[edge1] == nodes[edge2]);
+  if (!cond1) goto edge_loop;
+  valid_color = false;
+  goto edge_loop;
+
+edge_loop_post:
+  node_try_cnt++;
+  cond1 = (node_try_cnt == 10);
+  cond2 = !valid_color;
+  cond1 = cond1 & cond2;
+  if (cond1) goto first; // Search from the first again...
+  if (cond2) goto node_try_loop;
+  goto node_loop;
+
+node_loop_post:
+#endif
 
   std::cout << "答えは以下になります．" << loop_cnt << "回目で成功しました．"
             << std::endl;

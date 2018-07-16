@@ -26,8 +26,11 @@ module test_cpu;
     dmem dmem_1(.clk(clk), .a(daddr[17:2]), .rd(ddatain), .wd(ddataout), .we(we));
 
     initial begin
-        $dumpfile("dump.vcd");
-        $dumpvars(0,mipse_1);
+        if (!$test$plusargs("NODEBUG"))
+        begin
+            $dumpfile("dump.vcd");
+            $dumpvars(0,mipse_1);
+        end
         FP= $fopen("answer.txt");
         clk <= `DISABLE;
         rst_n <= `ENABLE_N;
@@ -36,7 +39,7 @@ module test_cpu;
         #(STEP*1/4)
         #STEP
         rst_n <= `DISABLE_N;
-        #(STEP*100000)
+        #(STEP*10000000)
         $display("Finish by STEP max");
         $display("patterns = %d", patterns);
         for(i=0; i<1024; i=i+1)

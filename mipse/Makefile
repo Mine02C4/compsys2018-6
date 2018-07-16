@@ -18,11 +18,13 @@ all: $(VOUT)
 
 answers: $(patsubst $(INPUTDIR)/dmem%.dat, answer%.txt, $(DMEMINPUTS))
 
-answer%.txt: $(INPUTDIR)/dmem%.dat randsearch.imem.dat $(VOUT)
-	cp randsearch.imem.dat imem.dat
+answer%.txt: $(INPUTDIR)/dmem%.dat $(VOUT)
 	cp $< dmem.dat
 	vvp -N $(VOUT) +NODEBUG
 	mv answer.txt $@
+
+imem.v: randsearch.imem.dat
+	./imem_converter.py $< -t imem.template.v -o $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 	$(VERILOG) $(VFLAGS) -o $@ $(VTEST) $(VFILES)

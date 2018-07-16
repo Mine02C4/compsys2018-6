@@ -3,4 +3,13 @@ addi $3,$0,100
 sw $3,$0,44
 add $4,$2,$3
 sw $4,$0,48
-sw  $3,$0,32767
+rand $5
+rand $5
+rand $5
+rand $5
+rand $5
+rand $5
+rand $5
+rand $5
+sw $3,$0,32767
+

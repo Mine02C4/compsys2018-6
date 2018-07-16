@@ -16,6 +16,10 @@ def compile_lines(inp_lines):
     # Parse for each line
     out_lines = list()
     for i, line in enumerate(inp_lines.splitlines()):
+        # Remove comment
+        comm_idx = line.find('//')
+        if 0 <= comm_idx:
+            line = line[: comm_idx]
         # Ignore break line
         line = line.strip()
         if len(line) == 0:
@@ -83,7 +87,12 @@ class Instruction32(object):
         for var in var_list:
             idx = self._extract_arg_idx(var)
             width = self._extract_bit_width(var)
-            rep = format(args[idx], '0{}b'.format(width))
+            val = args[idx]
+            if val < 0:
+                mask = (1 << width) - 1
+                rep = format(val & mask, '0{}b'.format(width))
+            else:
+                rep = format(val, '0{}b'.format(width))
             inst_rep = inst_rep.replace(var, rep)
         return inst_rep
 
@@ -117,27 +126,33 @@ class Instruction32(object):
 # Instructions
 #   '|': ignored, 'r': register, 'i': immediate number, '{n}': bit width
 INST_SCHEMES = {
-        'add':  Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100000'),
-        'sub':  Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100010'),
-        'and':  Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100100'),
-        # 'mult': Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|011000'),
-        'or':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100101'),
-        'xor':  Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100110'),
-        'slt':  Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|101010'),
-        'jr':   Instruction32('000000|r0{5}|00000|00000|00000|001000'),
-        'jalr': Instruction32('000000|r0{5}|00000|00000|00000|001001'),
-        'addi': Instruction32('001000|r1{5}|r0{5}|i0{16}|'),
-        'ori':  Instruction32('001101|r1{5}|r0{5}|i0{16}|'),
-        'slti': Instruction32('001010|r1{5}|r0{5}|i0{16}|'),
-        'lui':  Instruction32('001111|00000|r0{5}|i0{16}|'),
-        'beq':  Instruction32('000100|r1{5}|r0{5}|i0{16}|'),
-        'bne':  Instruction32('000101|r1{5}|r0{5}|i0{16}|'),
-        'j':    Instruction32('000010|i0{26}|'),
-        'jal':  Instruction32('000011|i0{26}|'),
-        'lb':   Instruction32('100000|r1{5}|r0{5}|i0{16}'),
-        'sb':   Instruction32('101000|r1{5}|r0{5}|i0{16}'),
-        'lw':   Instruction32('100011|r1{5}|r0{5}|i0{16}'),
-        'sw':   Instruction32('101011|r1{5}|r0{5}|i0{16}'),
+        'add':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100000'),
+        'sub':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100010'),
+        'and':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100100'),
+        # 'mult':  Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|011000'),
+        'or':    Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100101'),
+        'xor':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100110'),
+        'nor':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|100111'),
+        'slt':   Instruction32('000000|r1{5}|r2{5}|r0{5}|00000|101010'),
+        'jr':    Instruction32('000000|r0{5}|00000|00000|00000|001000'),
+        'jalr':  Instruction32('000000|r0{5}|00000|00000|00000|001001'),
+        'addi':  Instruction32('001000|r1{5}|r0{5}|i0{16}|'),
+        'ori':   Instruction32('001101|r1{5}|r0{5}|i0{16}|'),
+        'andi':  Instruction32('001100|r1{5}|r0{5}|i0{16}|'),
+        'lui':   Instruction32('001111|00000|r0{5}|i0{16}|'),
+        'beq':   Instruction32('000100|r1{5}|r0{5}|i0{16}|'),
+        'bne':   Instruction32('000101|r1{5}|r0{5}|i0{16}|'),
+        'j':     Instruction32('000010|i0{26}|'),
+        'jal':   Instruction32('000011|i0{26}|'),
+        'jpush': Instruction32('010000|i0{26}|'),
+        'jpop':  Instruction32('010000|00000|000000000000000000000'),
+        'push':  Instruction32('010000|r0{5}|000000000000000000000'),
+        'pop':   Instruction32('010000|r0{5}|000000000000000000000'),
+        'rand':  Instruction32('000001|00000|00000|r0{5}|00000|000000'),
+        'lb':    Instruction32('100000|r1{5}|r0{5}|i0{16}'),
+        'sb':    Instruction32('101000|r1{5}|r0{5}|i0{16}'),
+        'lw':    Instruction32('100011|r1{5}|r0{5}|i0{16}'),
+        'sw':    Instruction32('101011|r1{5}|r0{5}|i0{16}'),
 }
 
 
@@ -153,10 +168,11 @@ def _compile_line(inp_line, line_idx):
 
     # Extract operator
     ret = _split(inp_line, ' ', 2)
-    if not ret:
-        _print_error('No arguments', line_idx, inp_line)
-        return False
-    op, args = ret
+    if ret:
+        op, args = ret
+    else:
+        op = inp_line
+        args = ''
     op = op.strip()  # Remove extra spaces
     if op not in INST_SCHEMES:
         _print_error('Invalid operator', line_idx, inp_line)
@@ -167,6 +183,8 @@ def _compile_line(inp_line, line_idx):
     args = _split(args, ',')
     for i, arg in enumerate(args):
         args[i] = arg.strip()  # Remove extra spaces
+    if len(args) == 1 and not args[0]:  # For no arguments
+        args = list()
     logger.debug(' args: %s', args)
 
     # Divide input arguments into reg and imm

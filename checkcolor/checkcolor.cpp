@@ -36,6 +36,10 @@ int main(){
     std::cout<<"正しく入力されていません"<<std::endl;
     return 0;
   }
+
+  //output file
+  std::ofstream fpo0("answer.txt");
+  
   if(fpi0.fail()){
     std::cerr <<"ファイルを開けません\n";
     exit(1);
@@ -85,8 +89,16 @@ int main(){
       count=0;
     }
     std::cout<<"答えは以下になります．"<<failnum<<"回目で成功しました．"<<std::endl;
+
+    //---output file---
+    fpo0<<kukan<<" "<<henn<<std::endl;
+    for(i=0;i<henn;i++){
+      fpo0<<kyoukai[i*2+0]<<" "<<kyoukai[i*2+1]<<std::endl;
+    }
+    
     for(i=0;i<kukan;i++){
       std::cout<<block[i]%4<<std::endl;
-    }
+      fpo0<<i<<" "<<block[i]%4<<std::endl;
+    } 
   return 0; 
 }

@@ -177,8 +177,8 @@ edge_loop:
   reg5 = edges[reg7].first;
   reg6 = edges[reg7].second;
   // Consider only current node
-  reg3 = reg5 != reg8;
-  reg4 = reg6 != reg8;
+  reg3 = reg5 - reg8;
+  reg4 = reg6 - reg8;
   reg3 = reg3 & reg4;
   if (reg3) goto edge_loop;
   // Ignore edge for later node
@@ -187,17 +187,17 @@ edge_loop:
   reg3 = reg3 | reg4;
   if (reg3) goto edge_loop;
   // Check color validness
-  reg3 = (nodes[reg5] == nodes[reg6]);
-  if (!reg3) goto edge_loop;
+  reg3 = nodes[reg5];
+  reg4 = nodes[reg6];
+  if (reg3 != reg4) goto edge_loop;
   reg10 = 0;
   goto edge_loop;
 edge_loop_post:
   reg9++;
-  reg3 = (reg9 == reg11);
-  reg4 = !reg10;
-  reg3 = reg3 & reg4;
+  reg3 = (reg9 - reg11);
+  reg3 = !reg3 & !reg10;
   if (reg3) goto first; // Search from the first again...
-  if (reg4) goto node_try_loop;
+  if (!reg10) goto node_try_loop;
   goto node_loop;
 
 node_loop_post:

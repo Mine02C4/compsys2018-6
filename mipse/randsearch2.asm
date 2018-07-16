@@ -2,7 +2,7 @@ lb $1, $0, 0      // reg1 = n_nodes;
 lb $2, $0, 1      // reg2 = n_edges;
 addi $11, $0, 10  // reg11 = 10;  // 乱数ループ上限
 addi $8, $0, -1   // first: reg8 = -1;
-addi $8, $0, 1    // node_loop: reg8++;
+addi $8, $8, 1    // node_loop: reg8++;
 beq $8, $1, 37    // if (reg8 == reg1) goto node_loop_post;
 addi $9, $0, 0    // reg9 = 0;
 rand $3           // node_try_loop: reg3 = genrand();
@@ -12,7 +12,7 @@ add $12, $12, $12 // (x4 for 32bit storage)
 sw $3, $12, 1024  // nodes[reg8] = reg3;
 addi $10, $0, 1   // reg10 = 1;
 addi $7, $0, -1   // reg7 = -1;
-addi $7, $0, 1    // edge_loop: reg7++;
+addi $7, $7, 1    // edge_loop: reg7++;
 beq $7, $2, 21    // if (reg7 == reg2) goto edge_loop_post;
 add $12, $7, $7
 add $12, $12, $12 // (x4 for 32bit storage)
@@ -35,11 +35,11 @@ lw $4, $12, 1024  // reg4 = nodes[reg6];
 bne $3, $4, -21   // if (reg3 != reg4) goto edge_loop;
 addi $10, $0, 0   // reg10 = 0;
 beq $0, $0, -23   // goto edge_loop;
-addi $9, $0, 1    // edge_loop_post: reg9++;
+addi $9, $9, 1    // edge_loop_post: reg9++;
 sub $3, $9, $11   // reg3 = (reg9 - reg11);
 nor $3, $3, $10   // reg3 = !reg3 & !reg10;
 bne $3, $0, -38   // if (reg3) goto first; // Search from the first again...
 beq $10, $0, -35  // if (!reg10) goto node_try_loop;
 beq $0, $0, -39   // goto node_loop;
-sw $3, $0, 32767  // node_loop_post: ダミーの書き込み(これでシミュレーターが止まる)
+sw $2, $0, 32767  // node_loop_post: ダミーの書き込み(これでシミュレーターが止まる)
 beq $0, $0, -1    // 実機用のループ

@@ -10,10 +10,16 @@ module rfile
     reg [`DATA_W-1:0] rf[0:`REG-1];
     assign rd1 = |a1 == 0 ? 0 : rf[a1];
     assign rd2 = |a2 == 0 ? 0 : rf[a2];
+    
+    integer i;
     always @(negedge clk or negedge rst_n)
     begin
         if (!rst_n)
         begin
+            for (i = 0; i < `REG; i = i + 1)
+                rf[i] <= 0;
+            begin
+            end
             rf[`REG_STACK] <= `DEPTH - 1;
         end
         else if(we3) rf[a3] <= wd3;

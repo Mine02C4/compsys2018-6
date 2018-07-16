@@ -2,7 +2,6 @@
 #include<cstdlib>
 #include<iostream>
 #include<fstream>
-//#include<time.h>
 
 int main(int argc, char *argv[], char *envp[])
 {
@@ -41,11 +40,12 @@ int main(int argc, char *argv[], char *envp[])
 
   for (i = 0; i < henn; i++) {
     if(answer[kyoukai[i*2+0]]%4 != answer[kyoukai[i*2+1]]%4) count+=1;
-    //else if(answer[kyoukai[i*2+0]]%4==block[kyoukai[i*2+1]]%4)std::cout<<i<<" "<<answer[kyoukai[i*2+0]]%4<<" "<<answer[kyoukai[i*2+1]]%4<<std::endl;
   }
-  //std::cout<<count<<std::endl;
-  if(count==henn)std::cout<<"正解です"<<std::endl;
-  else if(count!=henn)std::cout<<"間違っています"<<std::endl;
-  else std::cout<<"errorです"<<std::endl;
-  return 0; 
+  if (count == henn) {
+    cout << "正解です" << endl;
+    return 0;
+  } else {
+    cout << "間違っています" << endl;
+    return 1;
+  }
 }

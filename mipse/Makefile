@@ -21,7 +21,7 @@ answers: $(patsubst $(INPUTDIR)/dmem%.dat, answer%.txt, $(DMEMINPUTS))
 answer%.txt: $(INPUTDIR)/dmem%.dat randsearch.imem.dat $(VOUT)
 	cp randsearch.imem.dat imem.dat
 	cp $< dmem.dat
-	vvp $(VOUT)
+	vvp -N $(VOUT) +NODEBUG
 	mv answer.txt $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
@@ -29,12 +29,9 @@ $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 
 test: randsearch.imem.dat $(VOUT)
 	cp $< imem.dat
-	vvp -N $(VOUT)
+	vvp -N $(VOUT) +NODEBUG
 
 %.imem.dat: %.asm $(ASM) $(ASMDEPS)
-	$(ASM) -o $@ $<
-
-imem.dat: prog.asm $(ASM) $(ASMDEPS)
 	$(ASM) -o $@ $<
 
 clean:

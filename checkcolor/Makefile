@@ -11,14 +11,15 @@ DEPS := $(patsubst %.o,%.d, $(OBJS))
 
 VDIR := ../mipse
 INPUTDIR := ../input
+JOBS := $(patsubst %, job%, $(PNUMBERS))
 
 .PHONY: all validate clean
 
 all: $(OUTCHECK) $(OUTCOLOR)
 
-validate: job01
+validate: $(JOBS)
 
-job01: $(OUTCHECK) $(VDIR)/answer01.txt $(INPUTDIR)/Q01.txt
+job%: $(OUTCHECK) $(VDIR)/answer%.txt $(INPUTDIR)/Q%.txt
 	./$^
 
 $(OUTCOLOR): $(patsubst %.cpp,%.o,$(COLORSRCS))
@@ -35,5 +36,4 @@ $(OUTCHECK): $(patsubst %.cpp,%.o,$(CHECKSRCS))
 
 clean:
 	$(RM) $(OBJS) $(DEPS)
-
 

@@ -37,6 +37,7 @@ mem[23] <= 32'h8ce90400;
 mem[24] <= 32'h1128ffea;
 mem[25] <= 32'h1401fff4;
 mem[26] <= 32'hac037fff;
+mem[27] <= 32'h1000ffff;
 
     end
 endmodule

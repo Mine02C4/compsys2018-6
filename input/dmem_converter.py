@@ -18,5 +18,4 @@ for first, second, third, fourth in zip(two_elements,two_elements,two_elements,t
     args.output_file.write(format(int(fourth), '02x'))
     args.output_file.write("\r\n")
 args.output_file.close()
-print('output file is dmem{0}.dat'.format(args.input_file.name))
 

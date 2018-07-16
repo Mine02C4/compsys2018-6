@@ -41,7 +41,7 @@ module test_cpu;
         $display("patterns = %d", patterns);
         for(i=0; i<1024; i=i+1)
             $fdisplay(FP,"%h", dmem_1.mem[i]);
-        $finish;
+        $stop;
     end
 
     always @(negedge clk) begin

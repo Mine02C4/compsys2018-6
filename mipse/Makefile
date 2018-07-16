@@ -29,7 +29,7 @@ $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 
 test: randsearch.imem.dat $(VOUT)
 	cp $< imem.dat
-	vvp $(VOUT)
+	vvp -N $(VOUT)
 
 %.imem.dat: %.asm $(ASM) $(ASMDEPS)
 	$(ASM) -o $@ $<

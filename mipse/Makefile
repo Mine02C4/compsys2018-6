@@ -11,20 +11,27 @@ ASMDEPS = $(ASMDIR)/compsys_compiler.py
 
 INPUTDIR := ../input
 DMEMINPUTS := $(wildcard $(INPUTDIR)/dmem*.dat)
+ANSWERS := $(patsubst $(INPUTDIR)/dmem%.dat, answer%.txt, $(DMEMINPUTS))
+FPGA_DMEMS := $(patsubst $(INPUTDIR)/dmem%.dat, fpga_dmem%.v, $(DMEMINPUTS))
 
 .PHONY: all answers test clean
 
 all: $(VOUT)
 
-answers: $(patsubst $(INPUTDIR)/dmem%.dat, answer%.txt, $(DMEMINPUTS))
+answers: $(ANSWERS)
+
+fpga: $(FPGA_DMEMS)
+
+fpga_dmem%.v: $(INPUTDIR)/dmem%.dat mem_converter.py
+	./mem_converter.py $< -t dmem.template.v -o $@
 
 answer%.txt: $(INPUTDIR)/dmem%.dat $(VOUT)
 	cp $< dmem.dat
 	vvp -N $(VOUT) +NODEBUG
 	mv answer.txt $@
 
-imem.v: randsearch.imem.dat
-	./imem_converter.py $< -t imem.template.v -o $@
+imem.v: randsearch.imem.dat mem_converter.py
+	./mem_converter.py $< -t imem.template.v -o $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 	$(VERILOG) $(VFLAGS) -o $@ $(VTEST) $(VFILES)

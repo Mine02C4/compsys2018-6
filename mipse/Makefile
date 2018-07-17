@@ -29,7 +29,7 @@ fpga_dmem%.v: $(INPUTDIR)/dmem%.dat mem_converter.py
 
 answer%.txt: $(INPUTDIR)/dmem%.dat $(VOUT)
 	cp $< dmem.dat
-	vvp -N $(VOUT)
+	vvp -N $(VOUT) +NODEBUG
 	mv answer.txt $@
 
 imem.v: randsearch2.imem.dat mem_converter.py

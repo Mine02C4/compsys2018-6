@@ -15,7 +15,7 @@ JOBS := $(patsubst %, job%, $(PNUMBERS))
 
 .PHONY: all validate clean
 
-all: $(OUTCHECK) $(OUTCOLOR)
+all: $(OUTCHECK) $(OUTCOLOR) checkcolor2.out
 
 validate: $(JOBS)
 
@@ -25,6 +25,8 @@ job%: $(OUTCHECK) $(VDIR)/answer%.txt $(INPUTDIR)/Q%.txt
 $(OUTCOLOR): $(patsubst %.cpp,%.o,$(COLORSRCS))
 
 $(OUTCHECK): $(patsubst %.cpp,%.o,$(CHECKSRCS))
+
+checkcolor2.out: checkcolor2.o
 
 %.out:
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)

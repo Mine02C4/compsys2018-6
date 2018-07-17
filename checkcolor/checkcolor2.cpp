@@ -86,7 +86,7 @@ int main(int argc, char const* argv[]) {
 
     // Search from the first again...
   }
-#elif 1
+#elif 0
   // Flatten algorithm
   uint32_t loop_cnt;
   uint32_t n_nodes_l, n_edges_l;
@@ -139,7 +139,60 @@ edge_loop_post: node_try_cnt++;
 node_loop_post:
 
 #else
+  // Flatten algorithm
+  uint32_t reg1;
+  uint32_t reg2, reg3;
+  uint32_t reg4, reg5;
+  uint32_t reg6, reg7;
+  uint32_t reg8;
+  uint32_t reg9;
+  uint32_t reg10;
+  uint32_t reg11;
+  uint32_t reg12;
 
+  reg1 = 0;
+  reg2 = n_nodes;
+  reg3 = n_edges;
+  reg12 = 10;
+first: reg1++;  // (debug)
+  reg9 = -1;
+node_loop: reg9 = reg9 + 1;
+  if (reg9 == reg2) goto node_loop_post;
+  reg10 = 0;  // Decide one node color
+node_try_loop: reg4 = genrand();
+  reg4 = reg4 & 3;
+  nodes[reg9] = reg4;
+  reg11 = 1;  // Check for each edge
+  reg8 = -1;
+edge_loop: reg8 = reg8 + 1;
+  if (reg8 == reg3) goto edge_loop_post;
+  reg6 = edges[reg8].first;
+  reg7 = edges[reg8].second;
+  reg4 = reg6 - reg9;  // Consider only current node
+  reg5 = reg7 - reg9;
+  reg4 = reg4 & reg5;
+  if (reg4 != 0) goto edge_loop;
+  reg4 = reg9 < reg6;  // Ignore edge for later node
+  reg5 = reg9 < reg7;
+  reg4 = reg4 | reg5;
+  if (reg4 != 0) goto edge_loop;
+  reg4 = nodes[reg6];  // Check color validness
+  reg5 = nodes[reg7];
+  reg4 = reg4 - reg5;
+  if (reg4 != 0) goto edge_loop;
+  reg11 = 0;
+  goto edge_loop;
+edge_loop_post: reg10++;
+  reg4 = (reg12 - reg10);
+  reg4 = 0 < reg4;
+  reg4 = ~reg4 & ~reg11;
+  reg4 = reg4 & 1;
+  if (reg4 != 0) goto first; // Search from the first again...
+  if (reg11 == 0) goto node_try_loop;
+  goto node_loop;
+node_loop_post:
+
+  auto loop_cnt = reg1;
 #endif
 
   std::cout << "答えは以下になります．" << loop_cnt << "回目で成功しました．"

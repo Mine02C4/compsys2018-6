@@ -5,6 +5,8 @@ VHEADERS := def.h
 VFILES := mipse.v alu.v rfile.v dmem.v imem.v rand.v
 VOUT := mipse.out
 
+PROGRAM := randsearch2.asm
+
 ASMDIR := ../compiler
 ASM := $(ASMDIR)/compile.py
 ASMDEPS = $(ASMDIR)/compsys_compiler.py
@@ -27,16 +29,16 @@ fpga_dmem%.v: $(INPUTDIR)/dmem%.dat mem_converter.py
 
 answer%.txt: $(INPUTDIR)/dmem%.dat $(VOUT)
 	cp $< dmem.dat
-	vvp -N $(VOUT) +NODEBUG
+	vvp -N $(VOUT)
 	mv answer.txt $@
 
-imem.v: randsearch.imem.dat mem_converter.py
+imem.v: randsearch2.imem.dat mem_converter.py
 	./mem_converter.py $< -t imem.template.v -o $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 	$(VERILOG) $(VFLAGS) -o $@ $(VTEST) $(VFILES)
 
-test: randsearch.imem.dat $(VOUT)
+test: randsearch2.imem.dat $(VOUT)
 	cp $< imem.dat
 	vvp -N $(VOUT) +NODEBUG
 
@@ -44,5 +46,5 @@ test: randsearch.imem.dat $(VOUT)
 	$(ASM) -o $@ $<
 
 clean:
-	$(RM) $(VOUT)
+	$(RM) $(VOUT) imem.v dmem.v
 

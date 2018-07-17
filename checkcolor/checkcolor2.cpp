@@ -87,122 +87,112 @@ int main(int argc, char const* argv[]) {
     // Search from the first again...
   }
 #elif 0
-  unsigned int loop_cnt = 0;
-
   // Flatten algorithm
-  bool cond1, cond2;
-  size_t edge1, edge2;
-  int edge_cnt = -1;
-  int node_cnt = -1;
-  size_t node_try_cnt = 0;
-  bool valid_color = true;
-first:
-  loop_cnt++;  // (debug)
+  uint32_t loop_cnt;
+  uint32_t n_nodes_l, n_edges_l;
+  uint32_t cond1, cond2;
+  uint32_t edge1, edge2;
+  uint32_t edge_cnt;
+  uint32_t node_cnt;
+  uint32_t node_try_cnt;
+  uint32_t valid_color;
+  uint32_t n_node_try;
+
+  loop_cnt = 0;
+  n_nodes_l = n_nodes;
+  n_edges_l = n_edges;
+  n_node_try = 10;
+first: loop_cnt++;  // (debug)
   node_cnt = -1;
-
-node_loop:
-  node_cnt++;
-  if (node_cnt == n_nodes) goto node_loop_post;
-
-  // Decide one node color
-  node_try_cnt = 0;
-node_try_loop:
-  nodes[node_cnt] = genrand() & 3;
-
-  // Check for each edge
-  valid_color = true;
+node_loop: node_cnt = node_cnt + 1;
+  if (node_cnt == n_nodes_l) goto node_loop_post;
+  node_try_cnt = 0;  // Decide one node color
+node_try_loop: cond1 = genrand();
+  cond1 = cond1 & 3;
+  nodes[node_cnt] = cond1;
+  valid_color = 1;  // Check for each edge
   edge_cnt = -1;
-edge_loop:
-  edge_cnt++;
-  if (edge_cnt == n_edges) goto edge_loop_post;
+edge_loop: edge_cnt = edge_cnt + 1;
+  if (edge_cnt == n_edges_l) goto edge_loop_post;
   edge1 = edges[edge_cnt].first;
   edge2 = edges[edge_cnt].second;
-
-  // Consider only current node
-  cond1 = edge1 != node_cnt;
-  cond2 = edge2 != node_cnt;
+  cond1 = edge1 - node_cnt;  // Consider only current node
+  cond2 = edge2 - node_cnt;
   cond1 = cond1 & cond2;
-  if (cond1) goto edge_loop;
-  // Ignore edge for later node
-  cond1 = node_cnt < edge1;
+  if (cond1 != 0) goto edge_loop;
+  cond1 = node_cnt < edge1;  // Ignore edge for later node
   cond2 = node_cnt < edge2;
   cond1 = cond1 | cond2;
-  if (cond1) goto edge_loop;
-  // Check color validness
-  cond1 = (nodes[edge1] == nodes[edge2]);
-  if (!cond1) goto edge_loop;
-  valid_color = false;
+  if (cond1 != 0) goto edge_loop;
+  cond1 = nodes[edge1];  // Check color validness
+  cond2 = nodes[edge2];
+  cond1 = cond1 - cond2;
+  if (cond1 != 0) goto edge_loop;
+  valid_color = 0;
   goto edge_loop;
-
-edge_loop_post:
-  node_try_cnt++;
-  cond1 = (node_try_cnt == 10);
-  cond2 = !valid_color;
-  cond1 = cond1 & cond2;
-  if (cond1) goto first; // Search from the first again...
-  if (cond2) goto node_try_loop;
+edge_loop_post: node_try_cnt++;
+  cond1 = (n_node_try - node_try_cnt);
+  cond1 = !cond1 & !valid_color;
+  if (cond1 != 0) goto first; // Search from the first again...
+  if (valid_color == 0) goto node_try_loop;
   goto node_loop;
-
 node_loop_post:
 
 #else
-  unsigned int loop_cnt = 0;
+  // Flatten algorithm
+  uint32_t reg1;
+  uint32_t reg2, reg3;
+  uint32_t reg4, reg5;
+  uint32_t reg6, reg7;
+  uint32_t reg8;
+  uint32_t reg9;
+  uint32_t reg10;
+  uint32_t reg11;
+  uint32_t reg12;
 
-  // Renamed algorithm
-  uint32_t reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10,
-           reg11;
-  reg0 = 0;
-
-  reg1 = n_nodes;
-  reg2 = n_edges;
-  reg11 = 10;  // node try count
-first:
-  loop_cnt++;  // (debug)
+  reg1 = 0;
+  reg2 = n_nodes;
+  reg3 = n_edges;
+  reg12 = 10;
+first: reg1++;  // (debug)
+  reg9 = -1;
+node_loop: reg9 = reg9 + 1;
+  if (reg9 == reg2) goto node_loop_post;
+  reg10 = 0;  // Decide one node color
+node_try_loop: reg4 = genrand();
+  reg4 = reg4 & 3;
+  nodes[reg9] = reg4;
+  reg11 = 1;  // Check for each edge
   reg8 = -1;
-node_loop:
-  reg8++;
-  if (reg8 == reg1) goto node_loop_post;
-  // Decide one node color
-  reg9 = 0;
-node_try_loop:
-  reg3 = genrand();
-  reg3 = reg3 & 3;
-  nodes[reg8] = reg3;
-  // Check for each edge
-  reg10 = 1;
-  reg7 = -1;
-edge_loop:
-  reg7++;
-  if (reg7 == reg2) goto edge_loop_post;
-  reg5 = edges[reg7].first;
-  reg6 = edges[reg7].second;
-  // Consider only current node
-  reg3 = reg5 - reg8;
-  reg4 = reg6 - reg8;
-  reg3 = reg3 & reg4;
-  if (reg3) goto edge_loop;
-  // Ignore edge for later node
-  reg3 = reg8 < reg5;
-  reg4 = reg8 < reg6;
-  reg3 = reg3 | reg4;
-  if (reg3) goto edge_loop;
-  // Check color validness
-  reg3 = nodes[reg5];
-  reg4 = nodes[reg6];
-  if (reg3 != reg4) goto edge_loop;
-  reg10 = 0;
+edge_loop: reg8 = reg8 + 1;
+  if (reg8 == reg3) goto edge_loop_post;
+  reg6 = edges[reg8].first;
+  reg7 = edges[reg8].second;
+  reg4 = reg6 - reg9;  // Consider only current node
+  reg5 = reg7 - reg9;
+  reg4 = reg4 & reg5;
+  if (reg4 != 0) goto edge_loop;
+  reg4 = reg9 < reg6;  // Ignore edge for later node
+  reg5 = reg9 < reg7;
+  reg4 = reg4 | reg5;
+  if (reg4 != 0) goto edge_loop;
+  reg4 = nodes[reg6];  // Check color validness
+  reg5 = nodes[reg7];
+  reg4 = reg4 - reg5;
+  if (reg4 != 0) goto edge_loop;
+  reg11 = 0;
   goto edge_loop;
-edge_loop_post:
-  reg9++;
-  reg3 = (reg9 - reg11);
-  reg3 = !reg3 & !reg10;
-  if (reg3) goto first; // Search from the first again...
-  if (!reg10) goto node_try_loop;
+edge_loop_post: reg10++;
+  reg4 = (reg12 - reg10);
+  reg4 = 0 < reg4;
+  reg4 = ~reg4 & ~reg11;
+  reg4 = reg4 & 1;
+  if (reg4 != 0) goto first; // Search from the first again...
+  if (reg11 == 0) goto node_try_loop;
   goto node_loop;
-
 node_loop_post:
 
-
+  auto loop_cnt = reg1;
 #endif
 
   std::cout << "答えは以下になります．" << loop_cnt << "回目で成功しました．"

@@ -15,9 +15,9 @@ addi $7, $0, -1   // reg7 = -1;
 addi $7, $7, 1    // edge_loop: reg7++;
 beq $7, $2, 21    // if (reg7 == reg2) goto edge_loop_post;
 add $12, $7, $7
-add $12, $12, $12 // (x4 for 32bit storage)
-lb $5, $7, 2     // reg5 = edges[reg7].first;
-lb $6, $7, 3     // reg6 = edges[reg7].second;
+add $12, $7, $7 // (x4 for 32bit storage)
+lb $5, $12, 2     // reg5 = edges[reg7].first;
+lb $6, $12, 3     // reg6 = edges[reg7].second;
 sub $3, $5, $8    // reg3 = reg5 - reg8;
 sub $4, $6, $8    // reg4 = reg6 - reg8;
 and $3, $3, $4    // reg3 = reg3 & reg4;

@@ -16,7 +16,7 @@ unsigned int genrand() {
 int main(int argc, char const* argv[]) {
   // Input question number
   std::cout << "解く問題の番号を入力してください（1〜9）" << std::endl;
-  unsigned int quest_num;
+  std::string quest_num;
   std::cin >> quest_num;
 
   // Open question file

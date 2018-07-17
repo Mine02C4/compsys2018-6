@@ -7,9 +7,9 @@
 
 unsigned short int genrand(unsigned short int x){
   
-  x ^= x << 7;
-  x ^= x >> 3;
-  x ^= x << 11;
+  x ^= x << 13;
+  x ^= x >> 17;
+  x ^= x << 5;
   
   return x;
   
@@ -31,7 +31,8 @@ int main(){
   else if(qnum==6)fpi0.open("input/Q6.txt");
   else if(qnum==7)fpi0.open("input/Q7.txt");
   else if(qnum==8)fpi0.open("input/Q8.txt");
-  else if(qnum==9)fpi0.open("input/Q9.txt");  
+  else if(qnum==9)fpi0.open("input/Q9.txt");
+  else if(qnum==10)fpi0.open("input/Q10.txt");  
   else{
     std::cout<<"正しく入力されていません"<<std::endl;
     return 0;

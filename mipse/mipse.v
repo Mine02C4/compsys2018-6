@@ -1,12 +1,17 @@
+`timescale 1ns / 1ps
+
 `include "def.h"
-module mipse(
+module mipse
+(
 input clk, rst_n,
 input [`DATA_W-1:0] instr,
 input [`DATA_W-1:0] readdata,
 output reg [`DATA_W-1:0] pc,
 output [`DATA_W-1:0] aluresult,
 output [`DATA_W-1:0] writedata,
-output memwrite);
+output memwrite,
+output finish
+);
 
 wire [`DATA_W-1:0] srca, srcb, rd2, result, rand_result;
 wire [`OPCODE_W-1:0] opcode;
@@ -22,6 +27,8 @@ wire slt_op, ori_op, andi_op, sb_op, lb_op, lui_op, rand_op;
 
 wire zero;
 assign zero = 32'b0;
+
+assign finish = (pc > 32'd16);
 
 assign {opcode, rs, rt, rd, shamt, func} = instr;
 assign signimm = {{16{instr[15]}},instr[15:0]};
@@ -93,11 +100,11 @@ always @(posedge clk or negedge rst_n)
 begin
     if(!rst_n) pc <= 0;
     else if (j_op | jal_op)
-        pc <= {pc[31:28],instr[25:0],2'b0};
+        pc <= {pc[31:28], instr[25:0],2'b0};
     else if (jr_op)
         pc <= srca;
     else if ((beq_op & (aluresult == zero) | (bne_op & (aluresult != zero))))
-        pc <= pcplus4 +{signimm[29:0],2'b0} ;
+        pc <= pcplus4 + {signimm[29:0],2'b0};
     else
         pc <= pcplus4;
 end

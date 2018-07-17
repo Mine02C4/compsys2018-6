@@ -181,7 +181,6 @@ edge_loop: reg8 = reg8 + 1;
   reg4 = reg4 - reg5;
   if (reg4 != 0) goto edge_loop;
   reg11 = 0;
-  goto edge_loop;
 edge_loop_post: reg10++;
   reg4 = (reg12 - reg10);
   reg4 = 0 < reg4;

@@ -52,11 +52,12 @@ module test_cpu;
         if (!$test$plusargs("NODEBUG"))
         begin
             $display("pc:%h(%d) idatain:%h", mipse_1.pc, mipse_1.pc / 4 + 1,  mipse_1.instr);
-            $display("reg:%h %h %h %h %h %h %h {%h %h}",
-            mipse_1.rfile_1.rf[1], mipse_1.rfile_1.rf[2],
-            mipse_1.rfile_1.rf[3], mipse_1.rfile_1.rf[4], mipse_1.rfile_1.rf[5],
-            mipse_1.rfile_1.rf[6], mipse_1.rfile_1.rf[7],
-            mipse_1.rfile_1.rf[8], mipse_1.rfile_1.rf[9]);
+            $display("reg:1:%h 2:%h 3:%h 4:%h 5:%h 6:%h 7:%h 8:%h 9:%h 10:%h 11:%h 12:%h 13:%h}",
+            mipse_1.rfile_1.rf[1], mipse_1.rfile_1.rf[2], mipse_1.rfile_1.rf[3],
+            mipse_1.rfile_1.rf[4], mipse_1.rfile_1.rf[5], mipse_1.rfile_1.rf[6],
+            mipse_1.rfile_1.rf[7], mipse_1.rfile_1.rf[8], mipse_1.rfile_1.rf[9],
+            mipse_1.rfile_1.rf[10], mipse_1.rfile_1.rf[11],
+            mipse_1.rfile_1.rf[12], mipse_1.rfile_1.rf[13]);
             if (mipse_1.pc == 32'h30)
             begin
                 $display("pattern: %h %h %h %h %h %h %h %h",

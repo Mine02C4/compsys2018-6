@@ -36,10 +36,11 @@ bne $3, $4, -21   // if (reg3 != reg4) goto edge_loop;
 addi $10, $0, 0   // reg10 = 0;
 beq $0, $0, -23   // goto edge_loop;
 addi $9, $9, 1    // edge_loop_post: reg9++;
-sub $3, $9, $11   // reg3 = (reg9 - reg11);
-nor $3, $3, $10   // reg3 = !reg3 & !reg10;
-bne $3, $0, -38   // if (reg3) goto first; // Search from the first again...
-beq $10, $0, -35  // if (!reg10) goto node_try_loop;
-beq $0, $0, -39   // goto node_loop;
+xor $3, $9, $11   // reg3 = reg9 ^ reg11;
+xor $7, $10, $0  // reg7 = reg10 ^ 0;
+or $3, $3, $7   // reg3 = (reg3 | reg7);
+beq $3, $0, -39   // if (!reg3) goto first; // Search from the first again...
+beq $10, $0, -36  // if (!reg10) goto node_try_loop;
+beq $0, $0, -40   // goto node_loop;
 sw $2, $0, 32767  // node_loop_post: ダミーの書き込み(これでシミュレーターが止まる)
 beq $0, $0, -1    // 実機用のループ

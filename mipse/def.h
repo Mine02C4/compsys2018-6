@@ -7,7 +7,7 @@
 `define LANE_W 4
 `define IMM_W 16
 `define JIMM_W 26
-`define DEPTH 1024
+`define DEPTH 512
 `define MULT_W 16
 
 `define ALU_THB `SEL_W'b000001

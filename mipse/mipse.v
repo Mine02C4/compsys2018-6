@@ -28,7 +28,9 @@ wire slt_op, ori_op, andi_op, sb_op, lb_op, lui_op, rand_op;
 wire zero;
 assign zero = 32'b0;
 
-assign finish = (pc > 32'd16);
+assign finish = (pc == 32'd104);
+//assign finish = (instr == 32'h1000ffff);
+//assign finish = (pc == 32'h0);
 
 assign {opcode, rs, rt, rd, shamt, func} = instr;
 assign signimm = {{16{instr[15]}},instr[15:0]};
@@ -99,6 +101,8 @@ assign pcplus4 = pc+4;
 always @(posedge clk or negedge rst_n)
 begin
     if(!rst_n) pc <= 0;
+    else if (finish)
+        pc <= pc;
     else if (j_op | jal_op)
         pc <= {pc[31:28], instr[25:0],2'b0};
     else if (jr_op)

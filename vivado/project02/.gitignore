@@ -88,3 +88,6 @@
 ## Log
 *.log
 
+/*.runs/
+/*.cache/
+

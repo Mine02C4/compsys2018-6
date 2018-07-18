@@ -46,7 +46,7 @@ module vivado_top(
 
     switcher switcher_1(.clk(core_clock), .reset(reset), .BTN(btn), .number(display_addr));
     //assign addr_dmem_1 = finish ? {18'b0, display_addr} : daddr;
-    assign addr_dmem_1 = sw[3] ? display_addr : finish ? {display_addr, 2'b0} + 256 : daddr; // sw[3] DEBUG MODE
+    assign addr_dmem_1 = sw[3] ? display_addr : finish ? {display_addr, 2'b0} + 1024 : daddr; // sw[3] DEBUG MODE
     assign addr_imem_1 = sw[3] ? display_addr : iaddr; // sw[3] DEBUG MODE
     assign display_number = sw[2] ? iaddr : display_addr; // sw[2] PC or manual addr       
     assign dots = 4'b1101;
@@ -54,7 +54,7 @@ module vivado_top(
     dmem dmem_1(.clk(core_clock), .a(addr_dmem_1[17:2]), .rd(ddatain), .wd(ddataout), .we(we));
     //number_to_4digits(.number(display_number), .d0(d0), .d1(d1), .d2(d2), .d3(d3));
     assign d0 = finish ? ddatain[3:0] : 0;
-    number_to_3digits(.number(display_number), .d0(d1), .d1(d2), .d2(d3));
+    number_to_3digits ntod_1(.number(display_number), .d0(d1), .d1(d2), .d2(d3));
     dynamic_7seg dseg_1(.clk(core_clock), .reset(reset), .d0(d0), .d1(d1), .d2(d2), .d3(d3), .dots(dots), .seg(seg));
     clk_wiz_0 mmcm_1(.clk_in1(clk), .reset(reset), .clk_out2(core_clock));
 endmodule

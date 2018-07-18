@@ -28,7 +28,7 @@ wire slt_op, ori_op, andi_op, sb_op, lb_op, lui_op, rand_op;
 wire zero;
 assign zero = 32'b0;
 
-assign finish = (pc == 32'd104);
+assign finish = (pc == 32'd188);
 //assign finish = (instr == 32'h1000ffff);
 //assign finish = (pc == 32'h0);
 

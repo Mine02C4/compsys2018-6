@@ -10,7 +10,7 @@ module imem
 
     initial
     begin
-        $readmemh("randsearch.imem.dat", mem);
+        $readmemh("randsearch2.imem.dat", mem);
     end
 endmodule
 

@@ -100,7 +100,10 @@ rfile rfile_1(.clk(clk), .rd1(srca), .a1(rs), .rd2(rd2), .a2(rt),
 assign pcplus4 = pc+4;
 always @(posedge clk or negedge rst_n)
 begin
-    if(!rst_n) pc <= 0;
+    if(!rst_n)
+    begin
+        pc <= 0;
+    end
     else if (finish)
         pc <= pc;
     else if (j_op | jal_op)

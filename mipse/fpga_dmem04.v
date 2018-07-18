@@ -6,7 +6,7 @@ module dmem (
     input [`DATA_W-1:0] wd,
     input  we);
 
-    reg [`DATA_W-1:0] mem[0:`DEPTH-1];
+    reg [`DATA_W-1:0] mem[0:`DMEM_DEPTH-1];
 
     assign rd = mem[a];
 

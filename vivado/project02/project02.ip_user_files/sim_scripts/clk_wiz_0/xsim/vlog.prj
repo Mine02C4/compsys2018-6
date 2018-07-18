@@ -1,6 +1,5 @@
-verilog xil_defaultlib --include "../../../ipstatic" \
-"../../../../../../fpga/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
-"../../../../../../fpga/clk_wiz_0/clk_wiz_0.v" \
+verilog xil_defaultlib --include "../../../../../../fpga/clk_wiz_0" \
+"../../../../../../fpga/clk_wiz_0/clk_wiz_0_sim_netlist.v" \
 
 verilog xil_defaultlib "glbl.v"
 

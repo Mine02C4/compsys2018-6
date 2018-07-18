@@ -32,7 +32,7 @@ answer%.txt: $(INPUTDIR)/dmem%.dat $(VOUT)
 	vvp -N $(VOUT) +NODEBUG
 	mv answer.txt $@
 
-imem.v: dfs.imem.dat mem_converter.py
+imem.v: dfs.imem.dat mem_converter.py imem.template.v 
 	./mem_converter.py $< -t imem.template.v -o $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)

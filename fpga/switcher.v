@@ -6,6 +6,7 @@ module switcher(
     input clk,
     input reset,
     input [1:0] BTN,
+    input [`MAX_WIDTH-1:0] max,
     output [`MAX_WIDTH-1:0] number
     );
 
@@ -45,7 +46,7 @@ module switcher(
 			ff <= 0;
 		else if (inc == 1) // increment
 		begin
-			if (ff == `MAX_VALUE)
+			if (ff == max)
 				ff <= 0;
 			else
 				ff <= ff + 1;
@@ -53,7 +54,7 @@ module switcher(
 		else if (dec == 1) // decrement
 		begin
 			if (ff == 0)
-				ff <= `MAX_VALUE;
+				ff <= max;
 			else
 				ff <= ff - 1;
         end

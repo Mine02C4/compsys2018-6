@@ -32,13 +32,13 @@ answer%.txt: $(INPUTDIR)/dmem%.dat $(VOUT)
 	vvp -N $(VOUT) +NODEBUG
 	mv answer.txt $@
 
-imem.v: randsearch2.imem.dat mem_converter.py
+imem.v: dfs.imem.dat mem_converter.py
 	./mem_converter.py $< -t imem.template.v -o $@
 
 $(VOUT): $(VTEST) $(VFILES) $(VHEADERS)
 	$(VERILOG) $(VFLAGS) -o $@ $(VTEST) $(VFILES)
 
-test: randsearch2.imem.dat $(VOUT)
+test: dfs.imem.dat $(VOUT)
 	cp $< imem.dat
 	vvp -N $(VOUT) +NODEBUG
 

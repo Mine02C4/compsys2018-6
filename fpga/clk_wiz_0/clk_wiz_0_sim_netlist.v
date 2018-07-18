@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-// Date        : Wed Jul 18 16:34:03 2018
+// Date        : Wed Jul 18 21:40:11 2018
 // Host        : KAORI running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/naoya/OneDrive/compsys2018-6/fpga/clk_wiz_0/clk_wiz_0_sim_netlist.v
+//               C:/Users/naoya/OneDrive/compsys2018-6/fpga/clk_wiz_0/clk_wiz_0_sim_netlist.v
 // Design      : clk_wiz_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -71,11 +71,11 @@ module clk_wiz_0_clk_wiz_0_clk_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   PLLE2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT(41),
+    .CLKFBOUT_MULT(42),
     .CLKFBOUT_PHASE(0.000000),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE(82),
+    .CLKOUT0_DIVIDE(70),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT1_DIVIDE(1),

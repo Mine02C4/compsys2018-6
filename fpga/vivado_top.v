@@ -49,7 +49,7 @@ module vivado_top(
     switcher switcher_1(.clk(core_clock), .reset(reset), .BTN(btn), .max(number_of_areas - 1), .number(display_addr));
     assign addr_dmem_1 =
         finish & number_of_areas == 0 ? 32'b0 :
-        display_mode ? {display_addr, 2'b0} + 1024 :
+        finish ? {display_addr, 2'b0} + 1024 :
         daddr;
     assign addr_imem_1 = sw[3] ? display_addr : iaddr; // sw[3] DEBUG MODE
     assign display_number = sw[2] ? number_of_areas : display_addr; // sw[2] PC or manual addr       
@@ -59,7 +59,7 @@ module vivado_top(
     number_to_3digits ntod_1(.number(display_number), .d0(d1), .d1(d2), .d2(d3));
     dynamic_7seg dseg_1(.clk(core_clock), .reset(reset), .d0(d0), .d1(d1), .d2(d2), .d3(d3), .dots(dots), .seg(seg));
     clk_wiz_0 mmcm_1(.clk_in1(clk), .reset(reset), .clk_core(core_clock));
-    always @(posedge finish or posedge reset)
+    always @(posedge core_clock or posedge reset)
     begin
         if (reset) number_of_areas <= 0;
         else if (finish & number_of_areas == 0)
